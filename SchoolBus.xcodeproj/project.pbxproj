@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		39C609531EDC301E00105DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C609521EDC301E00105DD7 /* AppDelegate.swift */; };
-		39C609551EDC301E00105DD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C609541EDC301E00105DD7 /* ViewController.swift */; };
 		39C609581EDC301E00105DD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39C609561EDC301E00105DD7 /* Main.storyboard */; };
 		39C6095A1EDC301E00105DD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39C609591EDC301E00105DD7 /* Assets.xcassets */; };
 		39C6095D1EDC301E00105DD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39C6095B1EDC301E00105DD7 /* LaunchScreen.storyboard */; };
+		39C6096A1EDC3B4D00105DD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C609691EDC3B4D00105DD7 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		39C6094F1EDC301E00105DD7 /* SchoolBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C609521EDC301E00105DD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		39C609541EDC301E00105DD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		39C609571EDC301E00105DD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		39C609591EDC301E00105DD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39C6095C1EDC301E00105DD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39C6095E1EDC301E00105DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39C609691EDC3B4D00105DD7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +54,22 @@
 		39C609511EDC301E00105DD7 /* SchoolBus */ = {
 			isa = PBXGroup;
 			children = (
+				39C609661EDC38D800105DD7 /* ViewControllers */,
 				39C609521EDC301E00105DD7 /* AppDelegate.swift */,
-				39C609541EDC301E00105DD7 /* ViewController.swift */,
 				39C609561EDC301E00105DD7 /* Main.storyboard */,
 				39C609591EDC301E00105DD7 /* Assets.xcassets */,
 				39C6095B1EDC301E00105DD7 /* LaunchScreen.storyboard */,
 				39C6095E1EDC301E00105DD7 /* Info.plist */,
 			);
 			path = SchoolBus;
+			sourceTree = "<group>";
+		};
+		39C609661EDC38D800105DD7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				39C609691EDC3B4D00105DD7 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39C609551EDC301E00105DD7 /* ViewController.swift in Sources */,
+				39C6096A1EDC3B4D00105DD7 /* LoginViewController.swift in Sources */,
 				39C609531EDC301E00105DD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +268,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SchoolBus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MH.SchoolBus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -272,7 +282,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SchoolBus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MH.SchoolBus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -299,6 +311,7 @@
 				39C609631EDC301E00105DD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
