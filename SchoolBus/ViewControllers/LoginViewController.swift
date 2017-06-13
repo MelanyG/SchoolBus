@@ -44,6 +44,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var linkTextView: UITextView!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var switcher: UISwitch!
     
     var stateMachine: StateMachine = StateMachine()
     
@@ -82,7 +83,11 @@ class LoginViewController: UIViewController {
                                 self.stateMachine.updateState(state: .Invalid)
                                 self.updateInterface()
                             case DataStatusCode.OK.rawValue:
-                                CacheManager.currentSession = value
+                                if self.switcher.isOn {
+                                    value.email = mail
+                                    value.password = pass
+                                    CacheManager.currentSession = value
+                                }
                                 self.stateMachine.updateState(state: .Authorised)
                                 self.updateInterface()
                                 self.presentDetailViewController()

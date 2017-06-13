@@ -16,7 +16,8 @@ class Session: Object, Mappable {
 
     dynamic var sessionId = ""
     dynamic var error: ErrorResponse?
-
+    var email: String?
+    var password: String?
     
     required convenience init?(map: Map) {
         self.init()
