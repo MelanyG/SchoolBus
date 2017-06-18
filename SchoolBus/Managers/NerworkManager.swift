@@ -86,4 +86,14 @@ class NerworkManager {
         }
     }
     
+    static func getRoutesByDate<T: Mappable>(date: String, completion: @escaping (DataResult<T>, _ statusCode: Int) -> ()) {
+        if let path = CacheManager.availableServer, let session = CacheManager.currentSession {
+            Alamofire.request(RouteRoute.getAllRoutes(path: path.serverURL, sessionId: session.sessionId, date: date))
+                .responseObject() { (response: DataResponse<T>) in
+                    completion(response.result, response.response?.statusCode ?? DataStatusCode.OK.rawValue)
+            }
+        }
+    }
+
+    
 }

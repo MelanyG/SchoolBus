@@ -5,7 +5,7 @@
 //  Created by Melaniia Hulianovych on 5/29/17.
 //  Copyright © 2017 Melaniia Hulianovych. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
 enum State {
@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
             if let session = CacheManager.currentSession {
                 stateMachine.updateState(state: .Authorised)
                 updateInterface()
-                presentDetailViewController()
+                getAllRoutes()
                 debugPrint("Current session: \(session.sessionId)")
             } else {
                 if checkForValidInPutData() {
@@ -90,7 +90,7 @@ class LoginViewController: UIViewController {
                                 }
                                 self.stateMachine.updateState(state: .Authorised)
                                 self.updateInterface()
-                                self.presentDetailViewController()
+                                self.getAllRoutes()
                             default: break
                             }
                         case .failure(let error):
@@ -142,12 +142,45 @@ class LoginViewController: UIViewController {
     }
     
     func presentDetailViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let detailController = storyboard.instantiateViewController(withIdentifier: String(describing: DetailViewController.self)) as? DetailViewController {
 
-            navigationController?.pushViewController(detailController, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController {
+
+            navigationController?.pushViewController(tabBarController, animated: true)
         }
         
+    }
+    
+    func getAllRoutes() {
+        if !NerworkManager.isConnectedToInternet() {
+            presentAlerView(with: Constants.InternetConnectionAbsence)
+        }
+        let group = DispatchGroup()
+        group.enter()
+        let day = Date().addNoOfDays(noOfDays: 1).shortDate
+        NerworkManager.getRoutesByDate(date: day) {
+            (result: DataResult<DayRouts>, statusCode: Int) in
+            
+            switch result {
+            case .success(let value):
+                debugPrint(value)
+                group.leave()
+            case .failure(let error):
+                switch statusCode {
+                case DataStatusCode.Unauthorized.rawValue:
+                    debugPrint(error)
+
+            default:
+                    debugPrint(error)
+                    break
+                }
+            }
+
+        }
+        group.notify(queue: DispatchQueue.main, execute: {
+            [unowned self] in
+            self.presentDetailViewController()
+        })
     }
     
     func presentAlerView(with text: String) {
