@@ -26,4 +26,12 @@ class DayRouts: Object, Mappable {
         routs <- (map["Route"], ListTransform<RouteModel>())
         points <- (map["Comps"], ListTransform<PointModel>())
     }
+    
+    func connectRoutsWithPoints() {
+        if let routs = routs, let points = points {
+            for rout in routs {
+                rout.selectMyPoints(pointsArray: Array(points))
+            }
+        }
+    }
 }

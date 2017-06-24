@@ -12,6 +12,7 @@ import RealmSwift
 class DatabaseManager {
     
     static let shared = DatabaseManager()
+    var items: [DayRouts] = []
     
     var realm: Realm {
          return try! Realm()
@@ -51,6 +52,10 @@ class DatabaseManager {
     
     func currentServer() -> Server? {
         return realm.objects(Server.self).first
+    }
+    
+    func addItem(dayItem: DayRouts) {
+        items.append(dayItem)
     }
 
 }

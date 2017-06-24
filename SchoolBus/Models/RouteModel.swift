@@ -15,12 +15,29 @@ import ObjectMapper_Realm
 class RouteModel: Object, Mappable {
     
     dynamic var routeNum: Int = 0
+    dynamic var extIdent: String = ""
+    dynamic var beginTime: Date = Date()
+    dynamic var endTime: Date = Date()
+    dynamic var travelDuration: Int = 0
+    var points: List<PointModel>?
     
     required convenience init?(map: Map) {
         self.init()
     }
     
     func mapping(map: Map) {
-//        serverURL <- map
+        routeNum <- map["Route_Num"]
+        extIdent <- map["Ext_Ident"]
+        beginTime <- (map["RouteTime_B"], DateTransform(dateFormat: .Strange))
+        endTime <- (map["RouteTime_E"], DateTransform(dateFormat: .Strange))
+        travelDuration <- map["Travel_Duration"]
+
+    }
+    
+    func selectMyPoints(pointsArray: [PointModel]) {
+        let myPoints = pointsArray.filter({
+            $0.routeNum == routeNum
+        })
+        points = List(myPoints)
     }
 }

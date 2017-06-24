@@ -26,4 +26,12 @@ extension Date {
         comps.day = noOfDays
         return cal.date(byAdding: comps as DateComponents, to: self)!
     }
+    
+    static func convert(date from: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "ddMMyyyyHHmm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale.current
+        return formatter.date(from: from) ?? Date()
+    }
 }

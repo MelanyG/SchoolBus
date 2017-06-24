@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Od4-Eh-0pG">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Od4-Eh-0pG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -146,13 +146,44 @@
                     <view key="view" contentMode="scaleToFill" id="xtC-Qs-nhU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bln-dc-WX7">
+                                <rect key="frame" x="0.0" y="216" width="375" height="402"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pUO-7j-eWS">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pUO-7j-eWS" id="Uv8-MA-JZ5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pCV-fl-Eca">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="520011203.054277">
+                                    <!--2017-06-24 15:33:23 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
                         <color key="backgroundColor" red="0.95160728693008423" green="0.2057812511920929" blue="0.57279813289642334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="pCV-fl-Eca" secondAttribute="trailing" id="EBU-Ih-4fB"/>
+                            <constraint firstItem="Bln-dc-WX7" firstAttribute="top" secondItem="pCV-fl-Eca" secondAttribute="bottom" id="WcJ-ni-cWW"/>
+                            <constraint firstAttribute="trailing" secondItem="Bln-dc-WX7" secondAttribute="trailing" id="aT4-jK-bmw"/>
+                            <constraint firstItem="Bln-dc-WX7" firstAttribute="leading" secondItem="xtC-Qs-nhU" secondAttribute="leading" id="c9B-iy-Lbm"/>
+                            <constraint firstItem="G8v-mH-D7L" firstAttribute="top" secondItem="Bln-dc-WX7" secondAttribute="bottom" id="evy-DX-7o7"/>
+                            <constraint firstItem="pCV-fl-Eca" firstAttribute="leading" secondItem="xtC-Qs-nhU" secondAttribute="leading" id="fEA-b7-mmw"/>
+                            <constraint firstItem="pCV-fl-Eca" firstAttribute="top" secondItem="xtC-Qs-nhU" secondAttribute="top" id="q2F-eb-iYd"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Schedule" image="green_circle" selectedImage="green_circle" id="Jp6-a7-vPf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6W-61-hiE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="945"/>
+            <point key="canvasLocation" x="781.60000000000002" y="944.97751124437787"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="fnF-y6-pSP">
@@ -271,7 +302,7 @@
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="ZNC-E0-jzY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="ZNC-E0-jzY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.50554395159999999" green="0.70506821070000003" blue="0.46723739269999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

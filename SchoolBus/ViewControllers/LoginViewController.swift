@@ -142,10 +142,10 @@ class LoginViewController: UIViewController {
     }
     
     func presentDetailViewController() {
-
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController {
-
+            
             navigationController?.pushViewController(tabBarController, animated: true)
         }
         
@@ -157,25 +157,34 @@ class LoginViewController: UIViewController {
         }
         let group = DispatchGroup()
         group.enter()
-        let day = Date().addNoOfDays(noOfDays: 1).shortDate
-        NerworkManager.getRoutesByDate(date: day) {
-            (result: DataResult<DayRouts>, statusCode: Int) in
-            
-            switch result {
-            case .success(let value):
-                debugPrint(value)
-                group.leave()
-            case .failure(let error):
-                switch statusCode {
-                case DataStatusCode.Unauthorized.rawValue:
-                    debugPrint(error)
-
-            default:
-                    debugPrint(error)
-                    break
+        for i in 1...5 {
+            let day = Date().addNoOfDays(noOfDays: i)
+            NerworkManager.getRoutesByDate(date: day.shortDate) {
+                (result: DataResult<DayRouts>, statusCode: Int) in
+                
+                switch result {
+                case .success(let value):
+                    value.date = day
+                    value.connectRoutsWithPoints()
+                    debugPrint(value)
+                    DatabaseManager.shared.addItem(dayItem: value)
+                    if DatabaseManager.shared.items.count == 5 {
+                        DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
+                        group.leave()
+                    }
+                    
+                case .failure(let error):
+                    switch statusCode {
+                    case DataStatusCode.Unauthorized.rawValue:
+                        debugPrint(error)
+                        
+                    default:
+                        debugPrint(error)
+                        break
+                    }
                 }
+                
             }
-
         }
         group.notify(queue: DispatchQueue.main, execute: {
             [unowned self] in
