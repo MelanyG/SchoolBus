@@ -15,8 +15,8 @@ extension Date {
         formatter.dateFormat = "dd.MM.yyyy"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.locale = Locale.current
-         let strDate = formatter.string(from: self)
-         return strDate
+        let strDate = formatter.string(from: self)
+        return strDate
     }
     
     func addNoOfDays(noOfDays:Int) -> Date {
@@ -33,5 +33,37 @@ extension Date {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.locale = Locale.current
         return formatter.date(from: from) ?? Date()
+    }
+    
+    static func getDayOfWeek(_ day: Date) -> String {
+        let weekdays = [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat"
+        ]
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: day)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd   LLL    HH   mm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale.current
+        let selectedDate = formatter.string(from: day)
+        if day == Date() {
+            return "Today"
+        }
+        return weekdays[weekDay - 1] + "  " + selectedDate
+    }
+    
+    static func getTime(_ day: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale.current
+        return formatter.string(from: day)
     }
 }
