@@ -19,6 +19,8 @@ class RouteModel: Object, Mappable {
     dynamic var beginTime: Date = Date()
     dynamic var endTime: Date = Date()
     dynamic var travelDuration: Int = 0
+    dynamic var distance: Int = 0
+    dynamic var qtyOfPoints: Int = 0
     var points: List<PointModel>?
     
     required convenience init?(map: Map) {
@@ -31,7 +33,8 @@ class RouteModel: Object, Mappable {
         beginTime <- (map["RouteTime_B"], DateTransform(dateFormat: .Strange))
         endTime <- (map["RouteTime_E"], DateTransform(dateFormat: .Strange))
         travelDuration <- map["Travel_Duration"]
-
+        distance <- map["distance"]
+        qtyOfPoints <- map["Count_Comps"]
     }
     
     func selectMyPoints(pointsArray: [PointModel]) {

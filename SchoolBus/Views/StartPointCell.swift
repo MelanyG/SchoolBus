@@ -19,3 +19,22 @@ class TimePointCell: UITableViewCell {
     }
 
 }
+
+class Distancecell: UITableViewCell {
+    @IBOutlet weak var distanceLabel: UILabel!
+    
+    func configure(with data: Int) {
+        distanceLabel.text = "\(data)"
+    }
+}
+
+class PointCell: UITableViewCell {
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var stopLabel: UILabel!
+    @IBOutlet weak var distanceTimeLabel: UILabel!
+    
+    func configure(with address: String, position inRout: Int, arrival time: Date) {
+        addressLabel.text = address
+        stopLabel.text = "Stop \(inRout) - \(Date.getTime(time))"
+    }
+}
