@@ -22,9 +22,11 @@ class PointModel: Object, Mappable {
     dynamic var address: String = ""
     dynamic var name: String = ""
     dynamic var timeArrival: Date = Date()
-    dynamic var timeFactArrival: String = ""
+    dynamic var timeFactArrival: Date = Date()
     dynamic var latitude: Double = 0
     dynamic var longitude: Double = 0
+    dynamic var distance: Double = 0
+    dynamic var timeToArraiveIntoPoint: Double = 0
     
     required convenience init?(map: Map) {
         self.init()
@@ -39,8 +41,10 @@ class PointModel: Object, Mappable {
         address <- map["Address"]
         name <- map["Comp_Name"]
         timeArrival <- (map["Time_Arrival"], DateTransform(dateFormat: .Standart))
-        timeFactArrival <- map["Time_Arrival_fact"]
+        timeFactArrival <- (map["Time_Arrival_fact"], DateTransform(dateFormat: .Standart))
         latitude <- map["lat"]
         longitude <- map["lng"]
+        distance <- map["distance"]
+        timeToArraiveIntoPoint <- map["distance"]
     }
 }

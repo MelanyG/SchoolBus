@@ -66,4 +66,10 @@ extension Date {
         formatter.locale = Locale.current
         return formatter.string(from: day)
     }
+    
+    static func getTimeInterval(between startTime: Date, and endTime: Date) -> Int {
+    let requestedComponent: Set<Calendar.Component> = [.minute]
+        let timeDifference = Calendar.current.dateComponents(requestedComponent, from: startTime, to: endTime)
+        return timeDifference.minute ?? 0
+    }
 }

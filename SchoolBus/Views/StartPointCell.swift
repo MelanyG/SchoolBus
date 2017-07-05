@@ -9,22 +9,26 @@
 import UIKit
 
 class TimePointCell: UITableViewCell {
-
+    
     @IBOutlet weak var timeLabel: UILabel!
     
-    func configure(with time: Date) {
-        
-        timeLabel.text = Date.getTime(time)
-        
+    func configure(with model: DataRepresentative, start: Bool = true) {
+        if start {
+            timeLabel.text = model.startTime
+        }
+        timeLabel.text = model.endTime
     }
-
+    
 }
 
 class Distancecell: UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     
-    func configure(with data: Int) {
-        distanceLabel.text = "\(data)"
+    func configure(with model: DataRepresentative, distance: Bool = true) {
+        if distance {
+            distanceLabel.text = model.distance
+        }
+        distanceLabel.text = model.duration
     }
 }
 
@@ -33,8 +37,8 @@ class PointCell: UITableViewCell {
     @IBOutlet weak var stopLabel: UILabel!
     @IBOutlet weak var distanceTimeLabel: UILabel!
     
-    func configure(with address: String, position inRout: Int, arrival time: Date) {
-        addressLabel.text = address
-        stopLabel.text = "Stop \(inRout) - \(Date.getTime(time))"
+    func configure(with model: DataRepresentative) {
+        addressLabel.text = model.pointAddress
+        stopLabel.text = model.distanceTimeLabel
     }
 }

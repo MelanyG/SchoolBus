@@ -43,39 +43,29 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let element = selectedElement
+        let model = RouteViewModel(with: selectedElement, and: indexPath.row)
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimePointCell") as! TimePointCell
-            if let startTime = element?.beginTime {
-                cell.configure(with: startTime)
-            }
+            cell.configure(with: model)
             return cell
             
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EndPointCell") as! TimePointCell
-            if let endTime = element?.endTime {
-                cell.configure(with: endTime)
-            }
+            cell.configure(with: model, start: false)
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell") as! Distancecell
-            if let distance = element?.distance {
-                cell.configure(with: distance / 1000)
-            }
+            cell.configure(with: model)
             return cell
         } else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlannedTimeCell") as! Distancecell
-            if let duration = element?.travelDuration {
-                cell.configure(with: duration)
-            }
+            cell.configure(with: model, distance: false )
             return cell
         }else if indexPath.row > 3 {
             let point = element?.points?[indexPath.row - 4]
             let cell = tableView.dequeueReusableCell(withIdentifier: "PointCell") as! PointCell
-            if let address = point?.address, let position = point?.positionInRoute, let time = point?.timeArrival {
-                cell.configure(with: address, position: position, arrival: time)
-            }
+            cell.configure(with: model)
             return cell
         }
         
