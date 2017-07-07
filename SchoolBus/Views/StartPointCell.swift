@@ -39,6 +39,7 @@ class PointCell: UITableViewCell {
     
     func configure(with model: DataRepresentative) {
         addressLabel.text = model.pointAddress
-        stopLabel.text = model.distanceTimeLabel
+        stopLabel.text = model.pointPosition
+        distanceTimeLabel.text = model.pointDistanceAndTime
     }
 }

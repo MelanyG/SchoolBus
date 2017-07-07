@@ -13,7 +13,7 @@ class RouteViewModel: DataRepresentative {
     var model: RouteModel?
     var index: Int = 0
     
-    public init(with model1: RouteModel, and index1: Int) {
+    public init(with model1: RouteModel?, and index1: Int) {
         model = model1
         index = index1
     }
@@ -46,14 +46,14 @@ class RouteViewModel: DataRepresentative {
     }
     
     var point: PointModel? {
-        if let qty = model?.qtyOfPoints, index < qty {
-            return model?.points?[index] ?? nil
+        if let qty = model?.qtyOfPoints, index > 3 && qty > 0 {
+            return model?.points?[index - 4] ?? nil
         }
         return nil
     }
     var previousPoint: PointModel? {
-        if let qty = model?.qtyOfPoints, index - 1 < qty && index >= 0 {
-            return model?.points?[index] ?? nil
+        if let qty = model?.qtyOfPoints, index - 1 >= 0 && qty > 0{
+            return model?.points?[index - 4] ?? nil
         }
         return nil
     }
@@ -74,7 +74,7 @@ class RouteViewModel: DataRepresentative {
     
     var pointDistanceAndTime: String {
         if let previousArrivalTime = previousPoint?.timeArrival {
-            let difference = Date.getTimeInterval(between: previousArrivalTime, and: point?.timeArrival ?? Date())
+            let difference = Date.getTimeInterval(between: point?.timeArrival, and: previousArrivalTime)
             return "\(point?.distance ?? 0) km / \(difference) min"
         }
         return ""

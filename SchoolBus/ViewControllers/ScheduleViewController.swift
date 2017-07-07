@@ -17,7 +17,7 @@ class ScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getAllRouts(from: DatabaseManager.shared.items)
-        selectedElement = items[2]
+        selectedElement = items[0]
         navigationItem.title = "Your Schedule"
         self.automaticallyAdjustsScrollViewInsets = false
     }
@@ -63,7 +63,6 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
             cell.configure(with: model, distance: false )
             return cell
         }else if indexPath.row > 3 {
-            let point = element?.points?[indexPath.row - 4]
             let cell = tableView.dequeueReusableCell(withIdentifier: "PointCell") as! PointCell
             cell.configure(with: model)
             return cell

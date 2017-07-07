@@ -45,12 +45,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var linkTextView: UITextView!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var switcher: UISwitch!
+    @IBOutlet weak var blurView: UIView!
     
     var stateMachine: StateMachine = StateMachine()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLink()
+
         if !NerworkManager.isConnectedToInternet() {
             presentAlerView(with: Constants.InternetConnectionAbsence)
         }
@@ -61,7 +63,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signInPressed(_ sender: UIButton) {
-        
+        self.blurView.isHidden = false
         switch stateMachine.currentState {
         case .Initial, .Invalid:
             if let session = CacheManager.currentSession {
@@ -71,6 +73,7 @@ class LoginViewController: UIViewController {
                 debugPrint("Current session: \(session.sessionId)")
             } else {
                 if checkForValidInPutData() {
+                    self.blurView.isHidden = false
                     guard let mail = loginTxtField.text, let pass = passTxtField.text else { return }
                     NerworkManager.loginUser(mail, password: pass) { [unowned self] (result: DataResult<Session>, statusCode: Int) in
                         switch result {
@@ -145,7 +148,7 @@ class LoginViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController {
-            
+            self.blurView.isHidden = true
             navigationController?.pushViewController(tabBarController, animated: true)
         }
         
@@ -204,10 +207,12 @@ class LoginViewController: UIViewController {
     private func checkForValidInPutData() -> Bool {
         if loginTxtField.text == "" {
             presentAlerView(with: Constants.EMailDataEmpty)
+            self.blurView.isHidden = true
             return false
         }
         if passTxtField.text == "" {
             presentAlerView(with: Constants.PasswordDataEmpty)
+            self.blurView.isHidden = true
             return false
         }
         return true
