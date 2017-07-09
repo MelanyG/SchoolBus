@@ -66,20 +66,57 @@ class RouteViewModel: DataRepresentative {
     }
     
     var pointPosition: String {
-        if let childPoint = point {
-            return "Stop \(childPoint.positionInRoute) - \(Date.getTime(childPoint.timeArrival))"
+        return ""
+    }
+    
+    var pointDistanceAndTime: String {
+        return ""
+    }
+}
+
+class PointViewModel: DataRepresentative {
+    
+    var model: PointModel?
+    var index: Int = 0
+    
+    public init(with model1: PointModel?, and index1: Int) {
+        model = model1
+        index = index1
+    }
+    
+    var startTime: String {
+        return ""
+    }
+    var endTime: String {
+        return ""
+    }
+    var distance: String {
+        return ""
+    }
+    
+    var duration: String {
+        return ""
+    }
+    
+    var pointAddress: String {
+        let fullAddress = model?.address.components(separatedBy: [","])
+        if let address = fullAddress, address.count > 0 {
+            return address[0] + address[1]
+        }
+        return ""
+    }
+    
+    var pointPosition: String {
+        if let childPoint = model {
+            return "\(childPoint.positionInRoute - 1) stop at \(childPoint.positionInRoute - 1) - \(Date.getTime(childPoint.timeArrival))"
         }
         return ""
     }
     
     var pointDistanceAndTime: String {
-        if let previousArrivalTime = previousPoint?.timeArrival {
-            let difference = Date.getTimeInterval(between: point?.timeArrival, and: previousArrivalTime)
-            return "\(point?.distance ?? 0) km / \(difference) min"
-        }
-        return ""
+        let doubleStr = String(format: "%.1f", ceil((model?.distance ?? 0)/1000))
+        return "\(doubleStr) km / \(model?.travelTime ?? 0) min"
     }
-    
 }
 
 protocol DataRepresentative {
@@ -91,7 +128,7 @@ protocol DataRepresentative {
     var pointAddress: String { get }
     var pointPosition: String { get }
     var pointDistanceAndTime: String { get }
-
+    
     
 }
 

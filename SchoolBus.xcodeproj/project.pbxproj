@@ -24,6 +24,7 @@
 		36396C8F1EE46E370035ACF2 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36396C8E1EE46E370035ACF2 /* ErrorResponse.swift */; };
 		366CEE621F01A3520096EBD5 /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CEE611F01A3520096EBD5 /* DateTransform.swift */; };
 		366CEE671F01B3840096EBD5 /* StartPointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CEE661F01B3840096EBD5 /* StartPointCell.swift */; };
+		369C01BD1F1176BA00432D2B /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01BC1F1176BA00432D2B /* RouteViewModel.swift */; };
 		39C609531EDC301E00105DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C609521EDC301E00105DD7 /* AppDelegate.swift */; };
 		39C609581EDC301E00105DD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39C609561EDC301E00105DD7 /* Main.storyboard */; };
 		39C6095A1EDC301E00105DD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39C609591EDC301E00105DD7 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		36396C8E1EE46E370035ACF2 /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		366CEE611F01A3520096EBD5 /* DateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTransform.swift; sourceTree = "<group>"; };
 		366CEE661F01B3840096EBD5 /* StartPointCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPointCell.swift; sourceTree = "<group>"; };
+		369C01BC1F1176BA00432D2B /* RouteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		39C6094F1EDC301E00105DD7 /* SchoolBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C609521EDC301E00105DD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39C609571EDC301E00105DD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		369C01BB1F1176BA00432D2B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				369C01BC1F1176BA00432D2B /* RouteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		39C609461EDC301E00105DD7 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +164,7 @@
 		39C609511EDC301E00105DD7 /* SchoolBus */ = {
 			isa = PBXGroup;
 			children = (
+				369C01BB1F1176BA00432D2B /* ViewModel */,
 				366CEE651F01B3840096EBD5 /* Views */,
 				3607108F1EF6F460007EC0C0 /* Extension */,
 				36396C851EE3694E0035ACF2 /* Models */,
@@ -312,6 +323,7 @@
 			files = (
 				3607108A1EF6E649007EC0C0 /* PointModel.swift in Sources */,
 				3607108C1EF6EAA0007EC0C0 /* RouteRoute.swift in Sources */,
+				369C01BD1F1176BA00432D2B /* RouteViewModel.swift in Sources */,
 				366CEE621F01A3520096EBD5 /* DateTransform.swift in Sources */,
 				360710881EF6CD55007EC0C0 /* ScheduleViewController.swift in Sources */,
 				36396C8D1EE36F2B0035ACF2 /* Server.swift in Sources */,

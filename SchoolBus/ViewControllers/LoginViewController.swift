@@ -75,32 +75,32 @@ class LoginViewController: UIViewController {
                 if checkForValidInPutData() {
                     self.blurView.isHidden = false
                     guard let mail = loginTxtField.text, let pass = passTxtField.text else { return }
-                    NerworkManager.loginUser(mail, password: pass) { [unowned self] (result: DataResult<Session>, statusCode: Int) in
+                    NerworkManager.loginUser(mail, password: pass) { [weak self] (result: DataResult<Session>, statusCode: Int) in
                         switch result {
                         case .success(let value):
                             debugPrint(value)
                             let er = value.error?.error ?? 0
                             switch er {
                             case DataStatusCode.WrongData.rawValue :
-                                self.presentAlerView(with: Constants.WrongDataInserted)
-                                self.stateMachine.updateState(state: .Invalid)
-                                self.updateInterface()
+                                self?.presentAlerView(with: Constants.WrongDataInserted)
+                                self?.stateMachine.updateState(state: .Invalid)
+                                self?.updateInterface()
                             case DataStatusCode.OK.rawValue:
-                                if self.switcher.isOn {
+                                if self?.switcher.isOn ?? false{
                                     value.email = mail
                                     value.password = pass
                                     CacheManager.currentSession = value
                                 }
-                                self.stateMachine.updateState(state: .Authorised)
-                                self.updateInterface()
-                                self.getAllRoutes()
+                                self?.stateMachine.updateState(state: .Authorised)
+                                self?.updateInterface()
+                                self?.getAllRoutes()
                             default: break
                             }
                         case .failure(let error):
                             switch statusCode {
                             case DataStatusCode.Unauthorized.rawValue:
-                                self.stateMachine.updateState(state: .Initial)
-                                self.updateInterface()
+                                self?.stateMachine.updateState(state: .Initial)
+                                self?.updateInterface()
                                 CacheManager.cleanAll()
                             default:
                                 debugPrint(error)
@@ -113,13 +113,13 @@ class LoginViewController: UIViewController {
         case .Authorised:
             if let mail = loginTxtField.text, let pass = passTxtField.text {
                 
-                NerworkManager.logoutUser(mail, password: pass, completion: {[unowned self] (result: DataResult<Session>, statusCode: Int) in
+                NerworkManager.logoutUser(mail, password: pass, completion: {[weak self] (result: DataResult<Session>, statusCode: Int) in
                     switch result {
                     case .success(let value):
                         debugPrint(value)
-                        self.stateMachine.updateState(state: .Initial)
+                        self?.stateMachine.updateState(state: .Initial)
                         CacheManager.cleanAll()
-                        self.updateInterface()
+                        self?.updateInterface()
                     case .failure(let error):
                         debugPrint(error)
                     }
@@ -130,16 +130,16 @@ class LoginViewController: UIViewController {
     }
     
     func updateInterface() {
-        DispatchQueue.main.async { [unowned self] in
-            switch self.stateMachine.currentState {
+        DispatchQueue.main.async { [weak self] in
+            switch self?.stateMachine.currentState ?? .Initial {
             case .Initial, .UnAuthorised:
-                self.signInButton.setTitle(Constants.UnAuthorisedorisedButtonTitle, for: UIControlState.normal)
-                self.loginTxtField.text = ""
-                self.passTxtField.text = ""
+                self?.signInButton.setTitle(Constants.UnAuthorisedorisedButtonTitle, for: UIControlState.normal)
+                self?.loginTxtField.text = ""
+                self?.passTxtField.text = ""
             case .Authorised:
-                self.signInButton.setTitle(Constants.AuthorisedorisedButtonTitle, for: UIControlState.normal)
+                self?.signInButton.setTitle(Constants.AuthorisedorisedButtonTitle, for: UIControlState.normal)
             case .Invalid:
-                self.passTxtField.text = ""
+                self?.passTxtField.text = ""
             }
         }
     }
@@ -190,17 +190,17 @@ class LoginViewController: UIViewController {
             }
         }
         group.notify(queue: DispatchQueue.main, execute: {
-            [unowned self] in
-            self.presentDetailViewController()
+            [weak self] in
+            self?.presentDetailViewController()
         })
     }
     
     func presentAlerView(with text: String) {
-        DispatchQueue.main.async { [unowned self] in
+        DispatchQueue.main.async { [weak self] in
             let alertView = UIAlertController(title: "", message: text, preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertView.addAction(action)
-            self.present(alertView, animated: true, completion: nil)
+            self?.present(alertView, animated: true, completion: nil)
         }
     }
     

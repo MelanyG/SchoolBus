@@ -27,6 +27,7 @@ class PointModel: Object, Mappable {
     dynamic var longitude: Double = 0
     dynamic var distance: Double = 0
     dynamic var timeToArraiveIntoPoint: Double = 0
+    dynamic var travelTime: Int = 0
     
     required convenience init?(map: Map) {
         self.init()
@@ -46,5 +47,6 @@ class PointModel: Object, Mappable {
         longitude <- map["lng"]
         distance <- map["distance"]
         timeToArraiveIntoPoint <- map["distance"]
+        travelTime <- map["Travel_Time"]
     }
 }

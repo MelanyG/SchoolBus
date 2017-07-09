@@ -17,9 +17,8 @@ class ScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getAllRouts(from: DatabaseManager.shared.items)
-        selectedElement = items[0]
-        navigationItem.title = "Your Schedule"
-        self.automaticallyAdjustsScrollViewInsets = false
+        selectedElement = items.count > 0 ? items[0] : nil
+        configureController()
     }
     
     //MARK: - Private methods
@@ -35,15 +34,24 @@ class ScheduleViewController: UIViewController {
         items.sort(by: { $0.beginTime > $1.beginTime})
     }
     
+    func configureController() {
+        navigationController?.navigationItem.title = "Your Schedule"
+        title = "Your Schedule"
+        self.automaticallyAdjustsScrollViewInsets = false
+    }
+    
 }
 
 extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4 + (selectedElement?.qtyOfPoints)!
+        if selectedElement?.qtyOfPoints == 0 {
+            return 0
+        }
+        return 4 + (selectedElement?.qtyOfPoints ?? 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = RouteViewModel(with: selectedElement, and: indexPath.row)
+        var model: DataRepresentative = RouteViewModel(with: selectedElement, and: indexPath.row)
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimePointCell") as! TimePointCell
@@ -64,7 +72,10 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }else if indexPath.row > 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PointCell") as! PointCell
-            cell.configure(with: model)
+            if indexPath.row > 3, let point = selectedElement?.points?[indexPath.row - 4] {
+                model = PointViewModel(with: point, and: indexPath.row)
+                cell.configure(with: model)
+            }
             return cell
         }
         
@@ -76,7 +87,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row < 2 {
             return 70
         } else if indexPath.row > 3 {
-            return 100
+            return 80
         } else {
             return UITableViewAutomaticDimension
         }

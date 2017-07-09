@@ -15,6 +15,7 @@ class TimePointCell: UITableViewCell {
     func configure(with model: DataRepresentative, start: Bool = true) {
         if start {
             timeLabel.text = model.startTime
+            return
         }
         timeLabel.text = model.endTime
     }
@@ -27,6 +28,7 @@ class Distancecell: UITableViewCell {
     func configure(with model: DataRepresentative, distance: Bool = true) {
         if distance {
             distanceLabel.text = model.distance
+            return
         }
         distanceLabel.text = model.duration
     }
