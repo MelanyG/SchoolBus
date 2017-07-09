@@ -35,8 +35,6 @@ class ScheduleViewController: UIViewController {
     }
     
     func configureController() {
-        navigationController?.navigationItem.title = "Your Schedule"
-        title = "Your Schedule"
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
@@ -47,7 +45,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
         if selectedElement?.qtyOfPoints == 0 {
             return 0
         }
-        return 4 + (selectedElement?.qtyOfPoints ?? 0)
+        return SBConstants.stableRowsInSchedule + (selectedElement?.qtyOfPoints ?? 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,7 +70,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }else if indexPath.row > 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PointCell") as! PointCell
-            if indexPath.row > 3, let point = selectedElement?.points?[indexPath.row - 4] {
+            if indexPath.row > 3, let point = selectedElement?.points?[indexPath.row - SBConstants.stableRowsInSchedule] {
                 model = PointViewModel(with: point, and: indexPath.row)
                 cell.configure(with: model)
             }
@@ -85,9 +83,9 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row < 2 {
-            return 70
+            return SBConstants.heighStableRowsInSchedule
         } else if indexPath.row > 3 {
-            return 80
+            return SBConstants.heighPointRowsInSchedule
         } else {
             return UITableViewAutomaticDimension
         }
@@ -109,7 +107,6 @@ extension ScheduleViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("selected - \(row)")
         self.selectedElement = items[row]
         detailedTableView.reloadData()
     }

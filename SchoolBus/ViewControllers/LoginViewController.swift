@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
         case .Initial, .Invalid:
             if let session = CacheManager.currentSession {
                 stateMachine.updateState(state: .Authorised)
-                updateInterface()
+//                updateInterface()
                 getAllRoutes()
                 debugPrint("Current session: \(session.sessionId)")
             } else {
@@ -84,7 +84,7 @@ class LoginViewController: UIViewController {
                             case DataStatusCode.WrongData.rawValue :
                                 self?.presentAlerView(with: Constants.WrongDataInserted)
                                 self?.stateMachine.updateState(state: .Invalid)
-                                self?.updateInterface()
+//                                self?.updateInterface()
                             case DataStatusCode.OK.rawValue:
                                 if self?.switcher.isOn ?? false{
                                     value.email = mail
@@ -92,7 +92,7 @@ class LoginViewController: UIViewController {
                                     CacheManager.currentSession = value
                                 }
                                 self?.stateMachine.updateState(state: .Authorised)
-                                self?.updateInterface()
+//                                self?.updateInterface()
                                 self?.getAllRoutes()
                             default: break
                             }
@@ -100,7 +100,7 @@ class LoginViewController: UIViewController {
                             switch statusCode {
                             case DataStatusCode.Unauthorized.rawValue:
                                 self?.stateMachine.updateState(state: .Initial)
-                                self?.updateInterface()
+//                                self?.updateInterface()
                                 CacheManager.cleanAll()
                             default:
                                 debugPrint(error)
@@ -119,7 +119,7 @@ class LoginViewController: UIViewController {
                         debugPrint(value)
                         self?.stateMachine.updateState(state: .Initial)
                         CacheManager.cleanAll()
-                        self?.updateInterface()
+//                        self?.updateInterface()
                     case .failure(let error):
                         debugPrint(error)
                     }
@@ -160,7 +160,7 @@ class LoginViewController: UIViewController {
         }
         let group = DispatchGroup()
         group.enter()
-        for i in 1...5 {
+        for i in 1...SBConstants.numberOfDaysToLoad {
             let day = Date().addNoOfDays(noOfDays: i)
             NerworkManager.getRoutesByDate(date: day.shortDate) {
                 (result: DataResult<DayRouts>, statusCode: Int) in
@@ -171,7 +171,7 @@ class LoginViewController: UIViewController {
                     value.connectRoutsWithPoints()
                     debugPrint(value)
                     DatabaseManager.shared.addItem(dayItem: value)
-                    if DatabaseManager.shared.items.count == 5 {
+                    if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
                         DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
                         group.leave()
                     }
@@ -191,6 +191,7 @@ class LoginViewController: UIViewController {
         }
         group.notify(queue: DispatchQueue.main, execute: {
             [weak self] in
+            self?.updateInterface()
             self?.presentDetailViewController()
         })
     }
