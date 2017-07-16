@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RouteViewModel: DataRepresentative {
     
@@ -72,6 +73,20 @@ class RouteViewModel: DataRepresentative {
     var pointDistanceAndTime: String {
         return ""
     }
+    
+    var fullName: String { return "" }
+    var childPicture: UIImage { return UIImage() }
+    var currentStatus: String { return "" }
+    
+     var edgePoints: (title: String, description: String) {
+        if index == 0, let count = model?.qtyOfPoints, count > 1, let address = model?.points?[0].address {
+            return (title: "Вiдправлення", description: address)
+        }
+        if index == 1, let count = model?.qtyOfPoints, count > 1, let address = model?.points?[count - 1].address  {
+            return (title: "Кiнець маршруту", description: address)
+        }
+        return (title: "", description: "")
+    }
 }
 
 class PointViewModel: DataRepresentative {
@@ -117,6 +132,25 @@ class PointViewModel: DataRepresentative {
         let doubleStr = String(format: "%.1f", ceil((model?.distance ?? 0)/1000))
         return "\(doubleStr) km / \(model?.travelTime ?? 0) min"
     }
+    
+    var fullName: String {
+        return model?.name ?? ""
+    }
+    
+    var childPicture: UIImage {
+        return UIImage()
+    }
+    
+    var currentStatus: String {
+        if model?.isVisited != nil {
+            return SBConstants.PointStatus.IsOnTheWay
+        } else {
+            return SBConstants.PointStatus.IsWaiting
+        }
+    }
+    var edgePoints: (title: String, description: String) {
+    return (title: "", description: "")
+    }
 }
 
 protocol DataRepresentative {
@@ -128,7 +162,10 @@ protocol DataRepresentative {
     var pointAddress: String { get }
     var pointPosition: String { get }
     var pointDistanceAndTime: String { get }
-    
+    var fullName: String { get }
+    var childPicture: UIImage { get }
+    var currentStatus: String { get }
+    var edgePoints: (title: String, description: String) { get }
     
 }
 

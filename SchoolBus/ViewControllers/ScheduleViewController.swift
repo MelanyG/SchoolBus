@@ -12,6 +12,7 @@ class ScheduleViewController: UIViewController {
     
     @IBOutlet weak var detailedTableView: UITableView!
     @IBOutlet weak var routsPicker: UIPickerView!
+    
     var items: [RouteModel] = []
     var selectedElement: RouteModel?
     override func viewDidLoad() {

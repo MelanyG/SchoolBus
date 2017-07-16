@@ -10,13 +10,26 @@ import UIKit
 
 class CallCenterViewController: UIViewController {
 
+    @IBOutlet weak var customNavigationHeight: NSLayoutConstraint!
     @IBOutlet weak var phoneButton: UIImageView!
+    @IBOutlet weak var phoneDescription: UILabel!
+    @IBOutlet weak var customBarTitle: UILabel!
+    var heightOfTitle: CGFloat = 64.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configure()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CallCenterViewController.imageTapped(gesture:)))
         phoneButton.addGestureRecognizer(tapGesture)
+    }
+    
+    func configure() {
+        title = "Forgot Password"
+        customNavigationHeight.constant = heightOfTitle
+        if heightOfTitle == 0 {
+            customBarTitle.text = ""
+            phoneDescription.text = "Call Center"
+        }
     }
     
     func imageTapped(gesture: UIGestureRecognizer) {

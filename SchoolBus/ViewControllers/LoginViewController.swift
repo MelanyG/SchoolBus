@@ -15,14 +15,7 @@ enum State {
     case Invalid
 }
 
-fileprivate struct Constants {
-    static let AuthorisedorisedButtonTitle = "Successfully signed. Click for change."
-    static let UnAuthorisedorisedButtonTitle = "Sign in."
-    static let InternetConnectionAbsence = "No internet connection. Try again later."
-    static let EMailDataEmpty = "Please insert email."
-    static let PasswordDataEmpty = "Please insert password."
-    static let WrongDataInserted = "Error in Connection. Mismatch between login and password. Please Try again."
-}
+
 
 struct StateMachine {
     
@@ -42,7 +35,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var idLable: UILabel!
     @IBOutlet weak var loginTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
-    @IBOutlet weak var linkTextView: UITextView!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var switcher: UISwitch!
     @IBOutlet weak var blurView: UIView!
@@ -51,16 +43,21 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureLink()
+//        configureLink()
 
         if !NerworkManager.isConnectedToInternet() {
-            presentAlerView(with: Constants.InternetConnectionAbsence)
+            presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
         }
     }
     
-    func configureLink() {
-        linkTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.init(colorLiteralRed: 51.0/255.0, green: 180.0/255.0, blue: 227.0/225.0, alpha: 1.0), NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = ""
+        navigationController?.setNavigationBarHidden(true, animated: false)    
     }
+//    func configureLink() {
+//        linkTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.init(colorLiteralRed: 51.0/255.0, green: 180.0/255.0, blue: 227.0/225.0, alpha: 1.0), NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
+//    }
     
     @IBAction func signInPressed(_ sender: UIButton) {
         self.blurView.isHidden = false
@@ -82,7 +79,7 @@ class LoginViewController: UIViewController {
                             let er = value.error?.error ?? 0
                             switch er {
                             case DataStatusCode.WrongData.rawValue :
-                                self?.presentAlerView(with: Constants.WrongDataInserted)
+                                self?.presentAlerView(with: SBConstants.LoginConstants.WrongDataInserted)
                                 self?.stateMachine.updateState(state: .Invalid)
 //                                self?.updateInterface()
                             case DataStatusCode.OK.rawValue:
@@ -133,15 +130,20 @@ class LoginViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             switch self?.stateMachine.currentState ?? .Initial {
             case .Initial, .UnAuthorised:
-                self?.signInButton.setTitle(Constants.UnAuthorisedorisedButtonTitle, for: UIControlState.normal)
+                self?.signInButton.setTitle(SBConstants.LoginConstants.UnAuthorisedorisedButtonTitle, for: UIControlState.normal)
                 self?.loginTxtField.text = ""
                 self?.passTxtField.text = ""
             case .Authorised:
-                self?.signInButton.setTitle(Constants.AuthorisedorisedButtonTitle, for: UIControlState.normal)
+                self?.signInButton.setTitle(SBConstants.LoginConstants.AuthorisedorisedButtonTitle, for: UIControlState.normal)
             case .Invalid:
                 self?.passTxtField.text = ""
             }
         }
+    }
+    
+    @IBAction func forgotPasswordPressed(_ sender: UIButton) {
+     
+        presentForgotViewController()
     }
     
     func presentDetailViewController() {
@@ -149,14 +151,26 @@ class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController {
             self.blurView.isHidden = true
-            navigationController?.pushViewController(tabBarController, animated: true)
+             navigationController?.pushViewController(tabBarController, animated: true)
+        }
+        
+    }
+    
+    func presentForgotViewController() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let forgotViewController = storyboard.instantiateViewController(withIdentifier: "CallCenterViewController") as? CallCenterViewController {
+            forgotViewController.heightOfTitle = 0.0
+            navigationController?.setNavigationBarHidden(false, animated: true)
+            title = "Back"
+            navigationController?.pushViewController(forgotViewController, animated: true)
         }
         
     }
     
     func getAllRoutes() {
         if !NerworkManager.isConnectedToInternet() {
-            presentAlerView(with: Constants.InternetConnectionAbsence)
+            presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
         }
         let group = DispatchGroup()
         group.enter()
@@ -207,12 +221,12 @@ class LoginViewController: UIViewController {
     
     private func checkForValidInPutData() -> Bool {
         if loginTxtField.text == "" {
-            presentAlerView(with: Constants.EMailDataEmpty)
+            presentAlerView(with: SBConstants.LoginConstants.EMailDataEmpty)
             self.blurView.isHidden = true
             return false
         }
         if passTxtField.text == "" {
-            presentAlerView(with: Constants.PasswordDataEmpty)
+            presentAlerView(with: SBConstants.LoginConstants.PasswordDataEmpty)
             self.blurView.isHidden = true
             return false
         }

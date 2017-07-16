@@ -30,6 +30,14 @@
 		369C01CB1F12B7BB00432D2B /* StartPointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01C81F12B7BB00432D2B /* StartPointCell.swift */; };
 		369C01CE1F12B7CA00432D2B /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01CD1F12B7CA00432D2B /* SBConstants.swift */; };
 		369C01D01F12B7EA00432D2B /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01CF1F12B7EA00432D2B /* NotificationViewModel.swift */; };
+		369C01D21F1BD49F00432D2B /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01D11F1BD49F00432D2B /* ProfileCell.swift */; };
+		369C01D41F1BD73B00432D2B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01D31F1BD73B00432D2B /* ProfileViewController.swift */; };
+		369C01D61F1BD8F500432D2B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01D51F1BD8F500432D2B /* UserModel.swift */; };
+		369C01D81F1BDC0300432D2B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01D71F1BDC0300432D2B /* ProfileViewModel.swift */; };
+		369C01DA1F1BE77F00432D2B /* DetaleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01D91F1BE77F00432D2B /* DetaleImageCell.swift */; };
+		369C01DC1F1BE89100432D2B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01DB1F1BE89100432D2B /* InfoViewController.swift */; };
+		369C01DE1F1C1EBB00432D2B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01DD1F1C1EBB00432D2B /* MapViewController.swift */; };
+		369C01E21F1C268D00432D2B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369C01E11F1C268D00432D2B /* MapKit.framework */; };
 		39C609531EDC301E00105DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C609521EDC301E00105DD7 /* AppDelegate.swift */; };
 		39C609581EDC301E00105DD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39C609561EDC301E00105DD7 /* Main.storyboard */; };
 		39C6095A1EDC301E00105DD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39C609591EDC301E00105DD7 /* Assets.xcassets */; };
@@ -62,6 +70,14 @@
 		369C01C81F12B7BB00432D2B /* StartPointCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPointCell.swift; sourceTree = "<group>"; };
 		369C01CD1F12B7CA00432D2B /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		369C01CF1F12B7EA00432D2B /* NotificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		369C01D11F1BD49F00432D2B /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		369C01D31F1BD73B00432D2B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		369C01D51F1BD8F500432D2B /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		369C01D71F1BDC0300432D2B /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		369C01D91F1BE77F00432D2B /* DetaleImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetaleImageCell.swift; sourceTree = "<group>"; };
+		369C01DB1F1BE89100432D2B /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		369C01DD1F1C1EBB00432D2B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		369C01E11F1C268D00432D2B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		39C6094F1EDC301E00105DD7 /* SchoolBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C609521EDC301E00105DD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39C609571EDC301E00105DD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				369C01E21F1C268D00432D2B /* MapKit.framework in Frameworks */,
 				772C44B623788D224F93C27F /* Pods_SchoolBus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +150,7 @@
 				36396C861EE3694E0035ACF2 /* Session.swift */,
 				36396C8C1EE36F2B0035ACF2 /* Server.swift */,
 				360710851EF6A9BC007EC0C0 /* RouteModel.swift */,
+				369C01D51F1BD8F500432D2B /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				369C01BC1F1176BA00432D2B /* RouteViewModel.swift */,
+				369C01D71F1BDC0300432D2B /* ProfileViewModel.swift */,
 				369C01CF1F12B7EA00432D2B /* NotificationViewModel.swift */,
 			);
 			path = ViewModel;
@@ -160,6 +179,8 @@
 			children = (
 				369C01C71F12B7BB00432D2B /* NotificationCell.swift */,
 				369C01C81F12B7BB00432D2B /* StartPointCell.swift */,
+				369C01D11F1BD49F00432D2B /* ProfileCell.swift */,
+				369C01D91F1BE77F00432D2B /* DetaleImageCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -225,6 +246,9 @@
 				36396C7F1EE35C640035ACF2 /* DetailViewController.swift */,
 				369C01BE1F129C6400432D2B /* CallCenterViewController.swift */,
 				369C01C21F12B4D400432D2B /* NotificationViewController.swift */,
+				369C01D31F1BD73B00432D2B /* ProfileViewController.swift */,
+				369C01DB1F1BE89100432D2B /* InfoViewController.swift */,
+				369C01DD1F1C1EBB00432D2B /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -232,6 +256,7 @@
 		F56325534C50E4C2C9147DB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				369C01E11F1C268D00432D2B /* MapKit.framework */,
 				D6C698F3D154F60600B4305F /* Pods_SchoolBus.framework */,
 			);
 			name = Frameworks;
@@ -273,6 +298,11 @@
 					39C6094E1EDC301E00105DD7 = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -362,17 +392,22 @@
 			files = (
 				3607108A1EF6E649007EC0C0 /* PointModel.swift in Sources */,
 				3607108C1EF6EAA0007EC0C0 /* RouteRoute.swift in Sources */,
+				369C01D81F1BDC0300432D2B /* ProfileViewModel.swift in Sources */,
 				369C01CA1F12B7BB00432D2B /* NotificationCell.swift in Sources */,
 				369C01BD1F1176BA00432D2B /* RouteViewModel.swift in Sources */,
+				369C01DC1F1BE89100432D2B /* InfoViewController.swift in Sources */,
 				366CEE621F01A3520096EBD5 /* DateTransform.swift in Sources */,
 				360710881EF6CD55007EC0C0 /* ScheduleViewController.swift in Sources */,
+				369C01D41F1BD73B00432D2B /* ProfileViewController.swift in Sources */,
 				369C01CE1F12B7CA00432D2B /* SBConstants.swift in Sources */,
 				36396C8D1EE36F2B0035ACF2 /* Server.swift in Sources */,
 				369C01CB1F12B7BB00432D2B /* StartPointCell.swift in Sources */,
 				369C01C31F12B4D400432D2B /* NotificationViewController.swift in Sources */,
 				36396C871EE3694E0035ACF2 /* Session.swift in Sources */,
 				36396C821EE35F5B0035ACF2 /* UserRoute.swift in Sources */,
+				369C01DE1F1C1EBB00432D2B /* MapViewController.swift in Sources */,
 				36396C8F1EE46E370035ACF2 /* ErrorResponse.swift in Sources */,
+				369C01D21F1BD49F00432D2B /* ProfileCell.swift in Sources */,
 				39C6096A1EDC3B4D00105DD7 /* LoginViewController.swift in Sources */,
 				36396C791EE34A290035ACF2 /* RouteExtension.swift in Sources */,
 				360710911EF6F460007EC0C0 /* DateExtension.swift in Sources */,
@@ -380,8 +415,10 @@
 				36396C801EE35C640035ACF2 /* DetailViewController.swift in Sources */,
 				369C01BF1F129C6400432D2B /* CallCenterViewController.swift in Sources */,
 				360710931EF7244B007EC0C0 /* DayRouts.swift in Sources */,
+				369C01D61F1BD8F500432D2B /* UserModel.swift in Sources */,
 				36396C7E1EE34BC20035ACF2 /* NerworkManager.swift in Sources */,
 				369C01D01F12B7EA00432D2B /* NotificationViewModel.swift in Sources */,
+				369C01DA1F1BE77F00432D2B /* DetaleImageCell.swift in Sources */,
 				360710861EF6A9BC007EC0C0 /* RouteModel.swift in Sources */,
 				39C609531EDC301E00105DD7 /* AppDelegate.swift in Sources */,
 				36396C8B1EE36B260035ACF2 /* DatabaseManager.swift in Sources */,
