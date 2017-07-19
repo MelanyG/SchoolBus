@@ -28,7 +28,7 @@ class DetaleImageCell: UITableViewCell {
     func configure(with model: DataRepresentative) {
         childPhoto.image = model.childPicture
         childName.text = model.fullName
-        chileLocation.text = model.pointAddress
+        chileLocation.text = model.currentStatus
     }
 
 }
@@ -37,10 +37,10 @@ class FrameCell: UITableViewCell {
     @IBOutlet weak var pointLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var describingImage: UIImageView!
+    @IBOutlet weak var imagePoint: UIImageView!
     
     func configure(with model: DataRepresentative) {
-        describingImage.image = model.childPicture
+        imagePoint.image = model.modelPin
         pointLabel.text = model.edgePoints.title
         descriptionLabel.text = model.edgePoints.description
         timeLabel.text = model.startTime
@@ -52,4 +52,10 @@ class DetailCell: UITableViewCell {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var imagePoint: UIImageView!
     
+    
+    func configure(with model: DataRepresentative) {
+        imagePoint.image = model.routeDetails.image
+        detailLabel.text = model.routeDetails.description
+        descriptionLabel.text = model.routeDetails.title
+    }
 }

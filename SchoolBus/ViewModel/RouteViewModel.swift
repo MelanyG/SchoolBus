@@ -75,10 +75,11 @@ class RouteViewModel: DataRepresentative {
     }
     
     var fullName: String { return "" }
-    var childPicture: UIImage { return UIImage() }
+    var childPicture: UIImage? { return UIImage() }
     var currentStatus: String { return "" }
+    var modelPin: UIImage? { return UIImage() }
     
-     var edgePoints: (title: String, description: String) {
+    var edgePoints: (title: String, description: String) {
         if index == 0, let count = model?.qtyOfPoints, count > 1, let address = model?.points?[0].address {
             return (title: "Вiдправлення", description: address)
         }
@@ -86,6 +87,15 @@ class RouteViewModel: DataRepresentative {
             return (title: "Кiнець маршруту", description: address)
         }
         return (title: "", description: "")
+    }
+    
+    var routeDetails: (image: UIImage?, title: String, description: String) {
+        if index == 0 {
+            return (image: UIImage(named: "distance"), title: "Вiдстань", description: distance + " км")
+        } else if index == 1 {
+        return (image: UIImage(named: "tripDuration"), title: "Час поїздки", description: duration + " хв.")
+        }
+        return (image: UIImage(named: "averageSpeed"), title: "Середня швидкiсть", description: "60" + " км/год")
     }
 }
 
@@ -100,7 +110,7 @@ class PointViewModel: DataRepresentative {
     }
     
     var startTime: String {
-        return ""
+        return Date.getTime(model?.timeArrival ?? Date())
     }
     var endTime: String {
         return ""
@@ -113,6 +123,10 @@ class PointViewModel: DataRepresentative {
         return ""
     }
     
+    var routeDetails: (image: UIImage?, title: String, description: String) {
+        return (image: UIImage(), title: "", description: "")
+    }
+    
     var pointAddress: String {
         let fullAddress = model?.address.components(separatedBy: [","])
         if let address = fullAddress, address.count > 0 {
@@ -123,7 +137,7 @@ class PointViewModel: DataRepresentative {
     
     var pointPosition: String {
         if let childPoint = model {
-            return "\(childPoint.positionInRoute - 1) stop at \(childPoint.positionInRoute - 1) - \(Date.getTime(childPoint.timeArrival))"
+            return "\(childPoint.positionInRoute - 1) зупинка о \(Date.getTime(childPoint.timeArrival))"
         }
         return ""
     }
@@ -137,8 +151,15 @@ class PointViewModel: DataRepresentative {
         return model?.name ?? ""
     }
     
-    var childPicture: UIImage {
-        return UIImage()
+    var childPicture: UIImage? {
+        return UIImage(named: "defaultImage")
+    }
+    
+    var modelPin: UIImage? {
+        if index == 0 {
+            return UIImage(named: "bluePin")
+        }
+        return UIImage(named: "greenPin")
     }
     
     var currentStatus: String {
@@ -149,7 +170,10 @@ class PointViewModel: DataRepresentative {
         }
     }
     var edgePoints: (title: String, description: String) {
-    return (title: "", description: "")
+        if index == 0 {
+            return (title: model?.address ?? "", description: "Вiдправлення")
+        }
+        return (title: model?.address ?? "", description: "Кiнець маршруту")
     }
 }
 
@@ -163,9 +187,10 @@ protocol DataRepresentative {
     var pointPosition: String { get }
     var pointDistanceAndTime: String { get }
     var fullName: String { get }
-    var childPicture: UIImage { get }
+    var childPicture: UIImage? { get }
+    var modelPin: UIImage? { get }
     var currentStatus: String { get }
     var edgePoints: (title: String, description: String) { get }
-    
+    var routeDetails: (image: UIImage?, title: String, description: String) { get }
 }
 

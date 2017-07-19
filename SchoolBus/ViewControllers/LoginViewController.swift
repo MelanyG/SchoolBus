@@ -43,8 +43,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        configureLink()
-
+        configureCachedData()
+        
         if !NerworkManager.isConnectedToInternet() {
             presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
         }
@@ -53,11 +53,18 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = ""
-        navigationController?.setNavigationBarHidden(true, animated: false)    
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
-//    func configureLink() {
-//        linkTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.init(colorLiteralRed: 51.0/255.0, green: 180.0/255.0, blue: 227.0/225.0, alpha: 1.0), NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
-//    }
+    
+    func configureCachedData() {
+        if let session = CacheManager.currentSession {
+            loginTxtField.text = session.email
+            passTxtField.text = session.password
+        }
+    }
+    //    func configureLink() {
+    //        linkTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.init(colorLiteralRed: 51.0/255.0, green: 180.0/255.0, blue: 227.0/225.0, alpha: 1.0), NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
+    //    }
     
     @IBAction func signInPressed(_ sender: UIButton) {
         self.blurView.isHidden = false
@@ -65,7 +72,7 @@ class LoginViewController: UIViewController {
         case .Initial, .Invalid:
             if let session = CacheManager.currentSession {
                 stateMachine.updateState(state: .Authorised)
-//                updateInterface()
+                //                updateInterface()
                 getAllRoutes()
                 debugPrint("Current session: \(session.sessionId)")
             } else {
@@ -81,7 +88,7 @@ class LoginViewController: UIViewController {
                             case DataStatusCode.WrongData.rawValue :
                                 self?.presentAlerView(with: SBConstants.LoginConstants.WrongDataInserted)
                                 self?.stateMachine.updateState(state: .Invalid)
-//                                self?.updateInterface()
+                            //                                self?.updateInterface()
                             case DataStatusCode.OK.rawValue:
                                 if self?.switcher.isOn ?? false{
                                     value.email = mail
@@ -89,7 +96,7 @@ class LoginViewController: UIViewController {
                                     CacheManager.currentSession = value
                                 }
                                 self?.stateMachine.updateState(state: .Authorised)
-//                                self?.updateInterface()
+                                //                                self?.updateInterface()
                                 self?.getAllRoutes()
                             default: break
                             }
@@ -97,7 +104,7 @@ class LoginViewController: UIViewController {
                             switch statusCode {
                             case DataStatusCode.Unauthorized.rawValue:
                                 self?.stateMachine.updateState(state: .Initial)
-//                                self?.updateInterface()
+                                //                                self?.updateInterface()
                                 CacheManager.cleanAll()
                             default:
                                 debugPrint(error)
@@ -116,7 +123,7 @@ class LoginViewController: UIViewController {
                         debugPrint(value)
                         self?.stateMachine.updateState(state: .Initial)
                         CacheManager.cleanAll()
-//                        self?.updateInterface()
+                    //                        self?.updateInterface()
                     case .failure(let error):
                         debugPrint(error)
                     }
@@ -142,7 +149,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotPasswordPressed(_ sender: UIButton) {
-     
+        
         presentForgotViewController()
     }
     
@@ -151,7 +158,7 @@ class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController {
             self.blurView.isHidden = true
-             navigationController?.pushViewController(tabBarController, animated: true)
+            navigationController?.pushViewController(tabBarController, animated: true)
         }
         
     }
