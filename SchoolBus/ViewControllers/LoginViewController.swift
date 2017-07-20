@@ -169,7 +169,7 @@ class LoginViewController: UIViewController {
         if let forgotViewController = storyboard.instantiateViewController(withIdentifier: "CallCenterViewController") as? CallCenterViewController {
             forgotViewController.heightOfTitle = 0.0
             navigationController?.setNavigationBarHidden(false, animated: true)
-            title = "Back"
+            title = "Назад"
             navigationController?.pushViewController(forgotViewController, animated: true)
         }
         

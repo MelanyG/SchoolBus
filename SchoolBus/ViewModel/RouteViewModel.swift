@@ -144,7 +144,7 @@ class PointViewModel: DataRepresentative {
     
     var pointDistanceAndTime: String {
         let doubleStr = String(format: "%.1f", ceil((model?.distance ?? 0)/1000))
-        return "\(doubleStr) km / \(model?.travelTime ?? 0) min"
+        return "\(doubleStr) км / \(model?.travelTime ?? 0) хв."
     }
     
     var fullName: String {

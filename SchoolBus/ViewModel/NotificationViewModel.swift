@@ -11,14 +11,14 @@ import Foundation
 class NotificationViewModel {
 
     var title: String {
-        return "Petja is delivered"
+        return "Петя був доставлений"
     }
     
     var description: String {
-        return "Petja was delivered at School # 5"
+        return "Петя був доставлений до Школи №5"
     }
     
     var time: String {
-        return "Today, 16:00"
+        return "Сьогодні, 16:00"
     }
 }

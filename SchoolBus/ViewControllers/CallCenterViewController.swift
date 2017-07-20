@@ -24,11 +24,11 @@ class CallCenterViewController: UIViewController {
     }
     
     func configure() {
-        title = "Forgot Password"
+        title = SBConstants.LoginConstants.ForgotPassword
         customNavigationHeight.constant = heightOfTitle
         if heightOfTitle == 0 {
             customBarTitle.text = ""
-            phoneDescription.text = "Call Center"
+            phoneDescription.text = SBConstants.LoginConstants.CallCenter
         }
     }
     

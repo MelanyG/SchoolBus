@@ -14,7 +14,7 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "uk")
         let strDate = formatter.string(from: self)
         return strDate
     }
@@ -31,19 +31,19 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "ddMMyyyyHHmm"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "uk")
         return formatter.date(from: from) ?? Date()
     }
     
     static func getDayOfWeek(_ day: Date) -> String {
         let weekdays = [
-            "Sun",
-            "Mon",
-            "Tue",
-            "Wed",
-            "Thu",
-            "Fri",
-            "Sat"
+            "Нд",
+            "Пн",
+            "Вт",
+            "Сер",
+            "Чт",
+            "Пт",
+            "Суб"
         ]
         let myCalendar = Calendar(identifier: .gregorian)
         let weekDay = myCalendar.component(.weekday, from: day)
@@ -51,10 +51,10 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd   LLL    HH   mm"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "uk")
         let selectedDate = formatter.string(from: day)
         if day == Date() {
-            return "Today"
+            return "Сьогодні"
         }
         return weekdays[weekDay - 1] + "  " + selectedDate
     }
@@ -63,7 +63,7 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "uk")
         return formatter.string(from: day)
     }
     
