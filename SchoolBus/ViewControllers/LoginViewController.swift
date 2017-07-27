@@ -155,8 +155,8 @@ class LoginViewController: UIViewController {
     
     func presentDetailViewController() {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController {
+        let storyboard = UIStoryboard(name: SBConstants.Main, bundle: nil)
+        if let tabBarController = storyboard.instantiateViewController(withIdentifier:String(describing: UITabBarController.self)) as? UITabBarController {
             self.blurView.isHidden = true
             navigationController?.pushViewController(tabBarController, animated: true)
         }
@@ -165,11 +165,11 @@ class LoginViewController: UIViewController {
     
     func presentForgotViewController() {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let forgotViewController = storyboard.instantiateViewController(withIdentifier: "CallCenterViewController") as? CallCenterViewController {
+        let storyboard = UIStoryboard(name: SBConstants.Main, bundle: nil)
+        if let forgotViewController = storyboard.instantiateViewController(withIdentifier: String(describing: CallCenterViewController.self)) as? CallCenterViewController {
             forgotViewController.heightOfTitle = 0.0
             navigationController?.setNavigationBarHidden(false, animated: true)
-            title = "Назад"
+            title = SBConstants.LoginConstants.BackButtonTitle
             navigationController?.pushViewController(forgotViewController, animated: true)
         }
         

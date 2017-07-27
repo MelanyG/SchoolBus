@@ -53,16 +53,16 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
         var model: DataRepresentative = RouteViewModel(with: selectedElement, and: indexPath.row)
         
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TimePointCell") as! TimePointCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TimePointCell.self)) as! TimePointCell
             cell.configure(with: model)
             return cell
             
         } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EndPointCell") as! TimePointCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TimePointCell.self)) as! TimePointCell
             cell.configure(with: model, start: false)
             return cell
         } else if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell") as! Distancecell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: Distancecell.self)) as! Distancecell
             cell.configure(with: model)
             return cell
         } else if indexPath.row == 3 {
@@ -70,7 +70,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
             cell.configure(with: model, distance: false )
             return cell
         }else if indexPath.row > 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PointCell") as! PointCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointCell.self)) as! PointCell
             if indexPath.row > 3, let point = selectedElement?.points?[indexPath.row - SBConstants.stableRowsInSchedule] {
                 model = PointViewModel(with: point, and: indexPath.row)
                 cell.configure(with: model)

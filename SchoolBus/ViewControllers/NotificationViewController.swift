@@ -31,16 +31,16 @@ extension NotificationViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = NotificationViewModel()
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell") as! NotificationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NotificationCell.self)) as! NotificationCell
         cell.configure(with: model)
         return cell
         
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Не прочитані"
+            return SBConstants.NotificationConstants.UnReadMessage
         }
-        return "Прочитані"
+        return SBConstants.NotificationConstants.ReadMessage
         
     }
 }

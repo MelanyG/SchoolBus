@@ -34,19 +34,19 @@ class PointModel: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        routeNum <- map["Route_Num"]
-        pointId <- map["Comp_Id"]
-        externalIdentifier <- map["Ext_Ident"]
-        isVisited <- map["Is_Visited"]
-        positionInRoute <- map["Pos_Id"]
-        address <- map["Address"]
-        name <- map["Comp_Name"]
-        timeArrival <- (map["Time_Arrival"], DateTransform(dateFormat: .Standart))
-        timeFactArrival <- (map["Time_Arrival_fact"], DateTransform(dateFormat: .Standart))
-        latitude <- map["lat"]
-        longitude <- map["lng"]
-        distance <- map["distance"]
+        routeNum <- map[SBConstants.ModelConstants.PointRoutNum]
+        pointId <- map[SBConstants.ModelConstants.PointCompID]
+        externalIdentifier <- map[SBConstants.ModelConstants.ExtIdentifier]
+        isVisited <- map[SBConstants.ModelConstants.PointIsVisited]
+        positionInRoute <- map[SBConstants.ModelConstants.PointPosition]
+        address <- map[SBConstants.ModelConstants.PointAddress]
+        name <- map[SBConstants.ModelConstants.PointName]
+        timeArrival <- (map[SBConstants.ModelConstants.PointTimeArrival], DateTransform(dateFormat: .Standart))
+        timeFactArrival <- (map[SBConstants.ModelConstants.PointTimeArrivalFact], DateTransform(dateFormat: .Standart))
+        latitude <- map[SBConstants.ModelConstants.PointLatitude]
+        longitude <- map[SBConstants.ModelConstants.PointLongitude]
+        distance <- map[SBConstants.ModelConstants.PointDistance]
         timeToArraiveIntoPoint <- map["distance"]
-        travelTime <- map["Travel_Time"]
+        travelTime <- map[SBConstants.ModelConstants.PointTravelTime]
     }
 }

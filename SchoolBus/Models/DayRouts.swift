@@ -23,8 +23,8 @@ class DayRouts: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        routs <- (map["Route"], ListTransform<RouteModel>())
-        points <- (map["Comps"], ListTransform<PointModel>())
+        routs <- (map[SBConstants.ModelConstants.DayRoute], ListTransform<RouteModel>())
+        points <- (map[SBConstants.ModelConstants.DayComps], ListTransform<PointModel>())
     }
     
     func connectRoutsWithPoints() {

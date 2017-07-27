@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Od4-Eh-0pG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Od4-Eh-0pG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -232,7 +232,7 @@
                                             <outlet property="timeLabel" destination="AsB-4b-XzO" id="l1R-HA-AU2"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceCell" id="rkv-Sv-YTs" customClass="Distancecell" customModule="SchoolBus" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Distancecell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Distancecell" id="rkv-Sv-YTs" customClass="Distancecell" customModule="SchoolBus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="156" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rkv-Sv-YTs" id="Rls-bQ-2yA">
@@ -693,7 +693,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="5MQ-fh-NSu">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarViewController" id="4h5-lJ-g0X" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UITabBarController" id="4h5-lJ-g0X" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="CEF-80-YbJ">

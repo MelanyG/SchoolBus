@@ -28,13 +28,13 @@ class RouteModel: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        routeNum <- map["Route_Num"]
-        extIdent <- map["Ext_Ident"]
-        beginTime <- (map["RouteTime_B"], DateTransform(dateFormat: .Strange))
-        endTime <- (map["RouteTime_E"], DateTransform(dateFormat: .Strange))
-        travelDuration <- map["Travel_Duration"]
-        distance <- map["distance"]
-        qtyOfPoints <- map["Count_Comps"]
+        routeNum <- map[SBConstants.ModelConstants.PointRoutNum]
+        extIdent <- map[SBConstants.ModelConstants.ExtIdentifier]
+        beginTime <- (map[SBConstants.ModelConstants.RouteTimeBegin], DateTransform(dateFormat: .Strange))
+        endTime <- (map[SBConstants.ModelConstants.RouteTimeEnd], DateTransform(dateFormat: .Strange))
+        travelDuration <- map[SBConstants.ModelConstants.RoutTravelDuration]
+        distance <- map[SBConstants.ModelConstants.PointDistance]
+        qtyOfPoints <- map[SBConstants.ModelConstants.CountComps]
     }
     
     func selectMyPoints(pointsArray: [PointModel]) {

@@ -14,15 +14,15 @@ class DetailViewController: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     private lazy var infoViewController: InfoViewController = {
 
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
+        let storyboard = UIStoryboard(name: SBConstants.Main, bundle: Bundle.main)
+        var viewController = storyboard.instantiateViewController(withIdentifier: String(describing: InfoViewController.self)) as! InfoViewController
         self.add(asChildViewController: viewController)
         return viewController
     }()
     
     private lazy var mapViewController: MapViewController = {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        let storyboard = UIStoryboard(name: SBConstants.Main, bundle: Bundle.main)
+        var viewController = storyboard.instantiateViewController(withIdentifier: String(describing: MapViewController.self)) as! MapViewController
         self.add(asChildViewController: viewController)
         return viewController
     }()

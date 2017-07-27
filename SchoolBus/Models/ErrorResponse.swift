@@ -23,9 +23,7 @@ class ErrorResponse: Object, Mappable {
     
     func mapping(map: Map) {
         
-        error <- map["error"]
-        
-        errorDescription <- map["msg"]
-        
+        error <- map[SBConstants.ModelConstants.ErrorResponseError]
+        errorDescription <- map[SBConstants.ModelConstants.ErrorResponseMsg]
     }
 }
