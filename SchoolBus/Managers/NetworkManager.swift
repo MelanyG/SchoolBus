@@ -25,7 +25,7 @@ enum DataStatusCode: Int {
 
 typealias DataResult<T> = Alamofire.Result<T>
 
-class NerworkManager {
+class NetworkManager {
     
     static func serverUrl() ->String{
         
@@ -69,7 +69,7 @@ class NerworkManager {
     }
     
     static func getActiveServerUrl(completion: @escaping (DataResult<String>, _ statusCode: Int) -> ()) {
-        Alamofire.request(UserRoute.serverID(path: NerworkManager.serverUrl()))
+        Alamofire.request(UserRoute.serverID(path: NetworkManager.serverUrl()))
             .validate()
             .responseString { response in
                 completion(response.result, response.response?.statusCode ?? DataStatusCode.OK.rawValue)
@@ -95,5 +95,21 @@ class NerworkManager {
         }
     }
 
+    static func getRoutesByDateFast<T: Mappable>(date: String, completion: @escaping (DataResult<T>, _ statusCode: Int) -> ()) {
+        if let path = CacheManager.availableServer, let session = CacheManager.currentSession {
+            Alamofire.request(RouteRoute.getAllRoutesFast(path: path.serverURL, sessionId: session.sessionId, date: date))
+                .responseObject() { (response: DataResponse<T>) in
+                    completion(response.result, response.response?.statusCode ?? DataStatusCode.OK.rawValue)
+            }
+        }
+    }
     
+    static func getCompsByRouteFast<T: Mappable>(route routeNum: String, completion: @escaping (DataResult<T>, _ statusCode: Int) -> ()) {
+        if let path = CacheManager.availableServer, let session = CacheManager.currentSession {
+            Alamofire.request(RouteRoute.getAllCompsToRoute(path: path.serverURL, sessionId: session.sessionId, routeID: routeNum))
+                .responseObject() { (response: DataResponse<T>) in
+                    completion(response.result, response.response?.statusCode ?? DataStatusCode.OK.rawValue)
+            }
+        }
+    }
 }

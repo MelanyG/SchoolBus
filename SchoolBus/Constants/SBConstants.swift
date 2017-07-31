@@ -38,6 +38,7 @@ class SBConstants {
     }
     struct ModelConstants {
         static let DayRoute = "Route"
+        static let DayRouteFast = "rows"
         static let DayComps = "Comps"
         static let ErrorResponseError = "error"
         static let ErrorResponseMsg = "Comps"
@@ -49,7 +50,7 @@ class SBConstants {
         static let PointAddress = "Address"
         static let PointName = "Comp_Name"
         static let PointTimeArrival = "Time_Arrival"
-        static let PointTimeArrivalFact = "Time_Arrival_fact"
+//        static let PointTimeArrivalFact = "Time_Arrival_fact"
         static let PointLatitude = "lat"
         static let PointLongitude = "lng"
         static let PointDistance = "distance"
@@ -61,6 +62,7 @@ class SBConstants {
         static let RoutTravelDuration = "Travel_Duration"
         static let RouteTimeBegin = "RouteTime_B"
         static let RouteTimeEnd = "RouteTime_E"
+        static let DayRoutsCount = "records"
     }
     struct NotificationConstants {
         static let ReadMessage = "Прочитані"

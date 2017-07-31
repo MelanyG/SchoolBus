@@ -75,5 +75,7 @@ extension Date {
         }
         return 0
     }
-    
+   func minutes(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+    }
 }

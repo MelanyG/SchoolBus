@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         configureCachedData()
         
-        if !NerworkManager.isConnectedToInternet() {
+        if !NetworkManager.isConnectedToInternet() {
             presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
         }
     }
@@ -73,13 +73,14 @@ class LoginViewController: UIViewController {
             if let session = CacheManager.currentSession {
                 stateMachine.updateState(state: .Authorised)
                 //                updateInterface()
-                getAllRoutes()
+//                getAllRoutes()
+                getAll()
                 debugPrint("Current session: \(session.sessionId)")
             } else {
                 if checkForValidInPutData() {
                     self.blurView.isHidden = false
                     guard let mail = loginTxtField.text, let pass = passTxtField.text else { return }
-                    NerworkManager.loginUser(mail, password: pass) { [weak self] (result: DataResult<Session>, statusCode: Int) in
+                    NetworkManager.loginUser(mail, password: pass) { [weak self] (result: DataResult<Session>, statusCode: Int) in
                         switch result {
                         case .success(let value):
                             debugPrint(value)
@@ -97,7 +98,8 @@ class LoginViewController: UIViewController {
                                 }
                                 self?.stateMachine.updateState(state: .Authorised)
                                 //                                self?.updateInterface()
-                                self?.getAllRoutes()
+//                                self?.getAllRoutes()
+                                self?.getAll()
                             default: break
                             }
                         case .failure(let error):
@@ -117,7 +119,7 @@ class LoginViewController: UIViewController {
         case .Authorised:
             if let mail = loginTxtField.text, let pass = passTxtField.text {
                 
-                NerworkManager.logoutUser(mail, password: pass, completion: {[weak self] (result: DataResult<Session>, statusCode: Int) in
+                NetworkManager.logoutUser(mail, password: pass, completion: {[weak self] (result: DataResult<Session>, statusCode: Int) in
                     switch result {
                     case .success(let value):
                         debugPrint(value)
@@ -175,22 +177,83 @@ class LoginViewController: UIViewController {
         
     }
     
-    func getAllRoutes() {
-        if !NerworkManager.isConnectedToInternet() {
+    func getAll() {
+        if !NetworkManager.isConnectedToInternet() {
             presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
         }
         let group = DispatchGroup()
         group.enter()
         for i in 1...SBConstants.numberOfDaysToLoad {
             let day = Date().addNoOfDays(noOfDays: i)
-            NerworkManager.getRoutesByDate(date: day.shortDate) {
+            debugPrint("Start \(day)")
+            let curDate = Date()
+            NetworkManager.getRoutesByDateFast(date: day.shortDate) {
                 (result: DataResult<DayRouts>, statusCode: Int) in
                 
                 switch result {
                 case .success(let value):
                     value.date = day
-                    value.connectRoutsWithPoints()
-                    debugPrint(value)
+                    for n in 0..<value.records {
+                        guard let route = value.routs?[n] else { return }
+                   
+                    NetworkManager.getCompsByRouteFast(route: String(route.routeNum), completion: { (result: DataResult<RouteModel>, statusCode: Int) in
+//                        route.points =
+                        print(result)
+                        if n == value.records {
+                         DatabaseManager.shared.addItem(dayItem: value)
+                            if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
+                                DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
+                                group.leave()
+                            }
+                        }
+                    })
+                    let cur = Date()
+                    debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
+                    
+                   
+                    }
+
+                    
+                case .failure(let error):
+                    switch statusCode {
+                    case DataStatusCode.Unauthorized.rawValue:
+                        debugPrint(error)
+                        
+                    default:
+                        debugPrint(error)
+                        break
+                    }
+                }
+                
+            }
+        }
+        group.notify(queue: DispatchQueue.main, execute: {
+            [weak self] in
+            self?.updateInterface()
+            self?.presentDetailViewController()
+        })
+    }
+    
+    func getAllRoutes() {
+        if !NetworkManager.isConnectedToInternet() {
+            presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
+        }
+        let group = DispatchGroup()
+        group.enter()
+        for i in 1...SBConstants.numberOfDaysToLoad {
+            let day = Date().addNoOfDays(noOfDays: i)
+            debugPrint("Start \(day)")
+            let curDate = Date()
+            NetworkManager.getRoutesByDate(date: day.shortDate) {
+                (result: DataResult<DayRouts>, statusCode: Int) in
+                
+                switch result {
+                case .success(let value):
+                    value.date = day
+//                    value.connectRoutsWithPoints()
+                    let cur = Date()
+                    debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
+
                     DatabaseManager.shared.addItem(dayItem: value)
                     if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
                         DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }

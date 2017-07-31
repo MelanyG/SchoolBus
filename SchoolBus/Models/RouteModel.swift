@@ -35,12 +35,13 @@ class RouteModel: Object, Mappable {
         travelDuration <- map[SBConstants.ModelConstants.RoutTravelDuration]
         distance <- map[SBConstants.ModelConstants.PointDistance]
         qtyOfPoints <- map[SBConstants.ModelConstants.CountComps]
+        points <- (map[SBConstants.ModelConstants.DayRouteFast], ListTransform<PointModel>())
     }
     
-    func selectMyPoints(pointsArray: [PointModel]) {
-        let myPoints = pointsArray.filter({
-            $0.routeNum == routeNum
-        })
-        points = List(myPoints)
-    }
+//    func selectMyPoints(pointsArray: [PointModel]) {
+//        let myPoints = pointsArray.filter({
+//            $0.routeNum == routeNum
+//        })
+//        points = List(myPoints)
+//    }
 }
