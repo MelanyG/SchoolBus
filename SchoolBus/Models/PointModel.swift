@@ -22,7 +22,7 @@ class PointModel: Object, Mappable {
     dynamic var positionTypeID: Int = 0
     dynamic var address: String = ""
     dynamic var name: String = ""
-    dynamic var timeArrival: Date = Date()
+    dynamic var timeArrival: String = ""
 //    dynamic var timeFactArrival: Date = Date()
     dynamic var latitude: Double = 0
     dynamic var longitude: Double = 0
@@ -43,7 +43,7 @@ class PointModel: Object, Mappable {
         positionInRoute <- map[SBConstants.ModelConstants.PointPosition]
         address <- map[SBConstants.ModelConstants.PointAddress]
         name <- map[SBConstants.ModelConstants.PointName]
-        timeArrival <- (map[SBConstants.ModelConstants.PointTimeArrival], DateTransform(dateFormat: .Standart))
+        timeArrival <- map[SBConstants.ModelConstants.PointTimeArrival]
         positionTypeID <- map[SBConstants.ModelConstants.PointPositionID]
 //        timeFactArrival <- (map[SBConstants.ModelConstants.PointTimeArrivalFact], DateTransform(dateFormat: .Standart))
         latitude <- map[SBConstants.ModelConstants.PointLatitude]

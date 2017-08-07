@@ -31,8 +31,8 @@ class RouteModel: Object, Mappable {
     func mapping(map: Map) {
         routeNum <- map[SBConstants.ModelConstants.PointRoutNum]
         extIdent <- map[SBConstants.ModelConstants.ExtIdentifier]
-        beginTime <- (map[SBConstants.ModelConstants.RouteTimeBegin], DateTransform(dateFormat: .Strange))
-        endTime <- (map[SBConstants.ModelConstants.RouteTimeEnd], DateTransform(dateFormat: .Strange))
+        beginTime <- (map[SBConstants.ModelConstants.RouteTimeBegin], DateTransform(dateFormat: .Short))
+        endTime <- (map[SBConstants.ModelConstants.RouteTimeEnd], DateTransform(dateFormat: .Short))
         travelDuration <- map[SBConstants.ModelConstants.RoutTravelDuration]
         distance <- map[SBConstants.ModelConstants.PointDistance]
         avgSpeed <- map[SBConstants.ModelConstants.RoutAverageSpeed]

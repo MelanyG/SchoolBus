@@ -12,6 +12,7 @@ import RealmSwift
 
 public enum DateFormat: String {
     case Standart = "yyyy-MM-dd'T'HH:mm:ss"
+    case Short =  "dd.MM.yyyy HH:mm"
     case Strange = "ddMMyyyyHHmm"
 }
 

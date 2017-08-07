@@ -46,7 +46,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
         if selectedElement?.qtyOfPoints == 0 {
             return 0
         }
-        return SBConstants.stableRowsInSchedule + (selectedElement?.qtyOfPoints ?? 0)
+        return SBConstants.stableRowsInSchedule + (((selectedElement?.qtyOfPoints)! - 1) ?? 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

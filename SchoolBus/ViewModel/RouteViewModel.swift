@@ -127,7 +127,7 @@ class PointViewModel: DataRepresentative {
     }
     
     var startTime: String {
-        return Date.getTime(model?.timeArrival ?? Date())
+        return model?.timeArrival ?? ""
     }
     var endTime: String {
         return ""
@@ -154,7 +154,7 @@ class PointViewModel: DataRepresentative {
     
     var pointPosition: String {
         if let childPoint = model {
-            return "\(childPoint.positionInRoute - 1) зупинка о \(Date.getTime(childPoint.timeArrival))"
+            return "\(childPoint.positionInRoute - 1) зупинка о \(childPoint.timeArrival)"
         }
         return ""
     }
