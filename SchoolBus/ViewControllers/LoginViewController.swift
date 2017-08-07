@@ -73,7 +73,7 @@ class LoginViewController: UIViewController {
             if let session = CacheManager.currentSession {
                 stateMachine.updateState(state: .Authorised)
                 //                updateInterface()
-//                getAllRoutes()
+                //                getAllRoutes()
                 getAll()
                 debugPrint("Current session: \(session.sessionId)")
             } else {
@@ -98,7 +98,7 @@ class LoginViewController: UIViewController {
                                 }
                                 self?.stateMachine.updateState(state: .Authorised)
                                 //                                self?.updateInterface()
-//                                self?.getAllRoutes()
+                                //                                self?.getAllRoutes()
                                 self?.getAll()
                             default: break
                             }
@@ -186,7 +186,7 @@ class LoginViewController: UIViewController {
         for i in 1...SBConstants.numberOfDaysToLoad {
             let day = Date().addNoOfDays(noOfDays: i)
             debugPrint("Start \(day)")
-            let curDate = Date()
+
             NetworkManager.getRoutesByDateFast(date: day.shortDate) {
                 (result: DataResult<DayRouts>, statusCode: Int) in
                 
@@ -195,25 +195,28 @@ class LoginViewController: UIViewController {
                     value.date = day
                     for n in 0..<value.records {
                         guard let route = value.routs?[n] else { return }
-                   
-                    NetworkManager.getCompsByRouteFast(route: String(route.routeNum), completion: { (result: DataResult<RouteModel>, statusCode: Int) in
-//                        route.points =
-                        print(result)
-                        if n == value.records {
-                         DatabaseManager.shared.addItem(dayItem: value)
-                            if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
-                                DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
-                                group.leave()
+                        
+                        NetworkManager.getCompsByRouteFast(route: String(route.routeNum), completion: { (result: DataResult<AllCompsModel>, statusCode: Int) in
+                            switch result {
+                            case .success(let comps):
+                                route.points = comps.points
+                                debugPrint(route.beginTime)
+                            case .failure(let error):
+                                debugPrint(error)
+                                
                             }
+                        })
+//                        let cur = Date()
+//                        debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
+                        DatabaseManager.shared.addItem(dayItem: value)
+                        if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
+                            DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
+                            group.leave()
                         }
-                    })
-                    let cur = Date()
-                    debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
-                    
-                   
+                        
                     }
-
                     
+
                 case .failure(let error):
                     switch statusCode {
                     case DataStatusCode.Unauthorized.rawValue:
@@ -250,10 +253,10 @@ class LoginViewController: UIViewController {
                 switch result {
                 case .success(let value):
                     value.date = day
-//                    value.connectRoutsWithPoints()
+                    //                    value.connectRoutsWithPoints()
                     let cur = Date()
                     debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
-
+                    
                     DatabaseManager.shared.addItem(dayItem: value)
                     if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
                         DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }

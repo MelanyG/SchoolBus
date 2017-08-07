@@ -14,7 +14,7 @@
 		360710911EF6F460007EC0C0 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360710901EF6F460007EC0C0 /* DateExtension.swift */; };
 		360710931EF7244B007EC0C0 /* DayRouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360710921EF7244B007EC0C0 /* DayRouts.swift */; };
 		36396C791EE34A290035ACF2 /* RouteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36396C781EE34A290035ACF2 /* RouteExtension.swift */; };
-		36396C7E1EE34BC20035ACF2 /* NerworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36396C7D1EE34BC20035ACF2 /* NerworkManager.swift */; };
+		36396C7E1EE34BC20035ACF2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36396C7D1EE34BC20035ACF2 /* NetworkManager.swift */; };
 		36396C801EE35C640035ACF2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36396C7F1EE35C640035ACF2 /* DetailViewController.swift */; };
 		36396C821EE35F5B0035ACF2 /* UserRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36396C811EE35F5B0035ACF2 /* UserRoute.swift */; };
 		36396C871EE3694E0035ACF2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36396C861EE3694E0035ACF2 /* Session.swift */; };
@@ -38,6 +38,8 @@
 		369C01DC1F1BE89100432D2B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01DB1F1BE89100432D2B /* InfoViewController.swift */; };
 		369C01DE1F1C1EBB00432D2B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01DD1F1C1EBB00432D2B /* MapViewController.swift */; };
 		369C01E21F1C268D00432D2B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369C01E11F1C268D00432D2B /* MapKit.framework */; };
+		36F09B511F37A0A2001073FF /* AllCompsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F09B501F37A0A2001073FF /* AllCompsModel.swift */; };
+		36F09B531F37B329001073FF /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F09B521F37B329001073FF /* NavigationManager.swift */; };
 		39C609531EDC301E00105DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C609521EDC301E00105DD7 /* AppDelegate.swift */; };
 		39C609581EDC301E00105DD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39C609561EDC301E00105DD7 /* Main.storyboard */; };
 		39C6095A1EDC301E00105DD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39C609591EDC301E00105DD7 /* Assets.xcassets */; };
@@ -55,7 +57,7 @@
 		360710901EF6F460007EC0C0 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		360710921EF7244B007EC0C0 /* DayRouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayRouts.swift; sourceTree = "<group>"; };
 		36396C781EE34A290035ACF2 /* RouteExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteExtension.swift; sourceTree = "<group>"; };
-		36396C7D1EE34BC20035ACF2 /* NerworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NerworkManager.swift; sourceTree = "<group>"; };
+		36396C7D1EE34BC20035ACF2 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		36396C7F1EE35C640035ACF2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		36396C811EE35F5B0035ACF2 /* UserRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRoute.swift; sourceTree = "<group>"; };
 		36396C861EE3694E0035ACF2 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -79,6 +81,8 @@
 		369C01DB1F1BE89100432D2B /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		369C01DD1F1C1EBB00432D2B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		369C01E11F1C268D00432D2B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		36F09B501F37A0A2001073FF /* AllCompsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCompsModel.swift; sourceTree = "<group>"; };
+		36F09B521F37B329001073FF /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		39C6094F1EDC301E00105DD7 /* SchoolBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C609521EDC301E00105DD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39C609571EDC301E00105DD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,7 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				5E7501F71F27A0350098EE31 /* MapManager.swift */,
-				36396C7D1EE34BC20035ACF2 /* NerworkManager.swift */,
+				36396C7D1EE34BC20035ACF2 /* NetworkManager.swift */,
+				36F09B521F37B329001073FF /* NavigationManager.swift */,
 				36396C881EE36A7B0035ACF2 /* CacheManager.swift */,
 				36396C8A1EE36B260035ACF2 /* DatabaseManager.swift */,
 			);
@@ -153,6 +158,7 @@
 				36396C861EE3694E0035ACF2 /* Session.swift */,
 				36396C8C1EE36F2B0035ACF2 /* Server.swift */,
 				360710851EF6A9BC007EC0C0 /* RouteModel.swift */,
+				36F09B501F37A0A2001073FF /* AllCompsModel.swift */,
 				369C01D51F1BD8F500432D2B /* UserModel.swift */,
 			);
 			path = Models;
@@ -402,6 +408,7 @@
 				366CEE621F01A3520096EBD5 /* DateTransform.swift in Sources */,
 				360710881EF6CD55007EC0C0 /* ScheduleViewController.swift in Sources */,
 				369C01D41F1BD73B00432D2B /* ProfileViewController.swift in Sources */,
+				36F09B531F37B329001073FF /* NavigationManager.swift in Sources */,
 				369C01CE1F12B7CA00432D2B /* SBConstants.swift in Sources */,
 				36396C8D1EE36F2B0035ACF2 /* Server.swift in Sources */,
 				369C01CB1F12B7BB00432D2B /* StartPointCell.swift in Sources */,
@@ -413,6 +420,7 @@
 				36396C8F1EE46E370035ACF2 /* ErrorResponse.swift in Sources */,
 				369C01D21F1BD49F00432D2B /* ProfileCell.swift in Sources */,
 				39C6096A1EDC3B4D00105DD7 /* LoginViewController.swift in Sources */,
+				36F09B511F37A0A2001073FF /* AllCompsModel.swift in Sources */,
 				36396C791EE34A290035ACF2 /* RouteExtension.swift in Sources */,
 				360710911EF6F460007EC0C0 /* DateExtension.swift in Sources */,
 				36396C891EE36A7B0035ACF2 /* CacheManager.swift in Sources */,
@@ -420,7 +428,7 @@
 				369C01BF1F129C6400432D2B /* CallCenterViewController.swift in Sources */,
 				360710931EF7244B007EC0C0 /* DayRouts.swift in Sources */,
 				369C01D61F1BD8F500432D2B /* UserModel.swift in Sources */,
-				36396C7E1EE34BC20035ACF2 /* NerworkManager.swift in Sources */,
+				36396C7E1EE34BC20035ACF2 /* NetworkManager.swift in Sources */,
 				369C01D01F12B7EA00432D2B /* NotificationViewModel.swift in Sources */,
 				369C01DA1F1BE77F00432D2B /* DetaleImageCell.swift in Sources */,
 				360710861EF6A9BC007EC0C0 /* RouteModel.swift in Sources */,

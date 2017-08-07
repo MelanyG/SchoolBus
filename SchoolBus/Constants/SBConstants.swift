@@ -41,7 +41,7 @@ class SBConstants {
         static let DayRouteFast = "rows"
         static let DayComps = "Comps"
         static let ErrorResponseError = "error"
-        static let ErrorResponseMsg = "Comps"
+        static let ErrorResponseMsg = "msg"
         static let PointRoutNum = "Route_Num"
         static let PointCompID = "Comp_Id"
         static let ExtIdentifier = "Ext_Ident"
