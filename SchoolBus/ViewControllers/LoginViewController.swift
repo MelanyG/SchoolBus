@@ -178,6 +178,7 @@ class LoginViewController: UIViewController {
     }
     
     func getAll() {
+        var routsWithPoint: Int = 0
         if !NetworkManager.isConnectedToInternet() {
             presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
         }
@@ -195,27 +196,31 @@ class LoginViewController: UIViewController {
                     value.date = day
                     for n in 0..<value.records {
                         guard let route = value.routs?[n] else { return }
-                        
+                        routsWithPoint += 1
                         NetworkManager.getCompsByRouteFast(route: String(route.routeNum), completion: { (result: DataResult<AllCompsModel>, statusCode: Int) in
                             switch result {
                             case .success(let comps):
+                                routsWithPoint -= 1
                                 route.points = comps.points
                                 debugPrint(route.beginTime)
                             case .failure(let error):
                                 debugPrint(error)
                                 
                             }
+                            if routsWithPoint == 0 {
+                                group.leave()
+                            }
                         })
 //                        let cur = Date()
 //                        debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
-                        DatabaseManager.shared.addItem(dayItem: value)
-                        if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
-                            DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
-                            group.leave()
-                        }
+
                         
                     }
-                    
+                    DatabaseManager.shared.addItem(dayItem: value)
+                    if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
+                        DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
+//                        group.leave()
+                    }
 
                 case .failure(let error):
                     switch statusCode {

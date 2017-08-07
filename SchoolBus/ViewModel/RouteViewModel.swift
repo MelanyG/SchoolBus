@@ -35,13 +35,30 @@ class RouteViewModel: DataRepresentative {
     
     var distance: String {
         if let distance = model?.distance {
-            return "\(distance / 1000)"
+            let fullDistance = distance.components(separatedBy: [" "])
+            if fullDistance.count > 0 {
+                return fullDistance[0]
+            }
         }
         return ""
     }
+    
     var duration: String {
         if let duration = model?.travelDuration {
-            return "\(duration )"
+            let fullDuration = duration.components(separatedBy: [" "])
+            if fullDuration.count > 0 {
+                return fullDuration[0]
+            }
+        }
+        return ""
+    }
+    
+    var avgSpeed: String {
+        if let speed = model?.avgSpeed {
+            let fullSpeed = speed.components(separatedBy: [" "])
+            if fullSpeed.count > 0 {
+                return fullSpeed[0]
+            }
         }
         return ""
     }
@@ -95,7 +112,7 @@ class RouteViewModel: DataRepresentative {
         } else if index == 1 {
         return (image: UIImage(named: "tripDuration"), title: "Час поїздки", description: duration + " хв.")
         }
-        return (image: UIImage(named: "averageSpeed"), title: "Середня швидкiсть", description: "60" + " км/год")
+        return (image: UIImage(named: "averageSpeed"), title: "Середня швидкiсть", description: avgSpeed + " км/год")
     }
 }
 
@@ -143,8 +160,14 @@ class PointViewModel: DataRepresentative {
     }
     
     var pointDistanceAndTime: String {
-        let doubleStr = String(format: "%.1f", ceil((model?.distance ?? 0)/1000))
-        return "\(doubleStr) км / \(model?.travelTime ?? 0) хв."
+        if let distance = model?.distance, let travelTime = model?.travelTime {
+            let fullDistance = distance.components(separatedBy: [" "])
+            let fullTravelTime = travelTime.components(separatedBy: [" "])
+            if fullDistance.count > 0 && fullTravelTime.count > 0 {
+                return "\(fullDistance[0]) км / \(fullTravelTime[0]) хв."
+            }
+        }
+        return ""
     }
     
     var fullName: String {

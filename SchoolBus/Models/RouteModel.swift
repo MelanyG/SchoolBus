@@ -18,8 +18,9 @@ class RouteModel: Object, Mappable {
     dynamic var extIdent: String = ""
     dynamic var beginTime: Date = Date()
     dynamic var endTime: Date = Date()
-    dynamic var travelDuration: Int = 0
-    dynamic var distance: Int = 0
+    dynamic var travelDuration: String = ""
+    dynamic var distance: String = ""
+    dynamic var avgSpeed: String = ""
     dynamic var qtyOfPoints: Int = 0
     var points: List<PointModel>?
     
@@ -34,6 +35,7 @@ class RouteModel: Object, Mappable {
         endTime <- (map[SBConstants.ModelConstants.RouteTimeEnd], DateTransform(dateFormat: .Strange))
         travelDuration <- map[SBConstants.ModelConstants.RoutTravelDuration]
         distance <- map[SBConstants.ModelConstants.PointDistance]
+        avgSpeed <- map[SBConstants.ModelConstants.RoutAverageSpeed]
         qtyOfPoints <- map[SBConstants.ModelConstants.CountComps]
         points <- (map[SBConstants.ModelConstants.DayRouteFast], ListTransform<PointModel>())
     }

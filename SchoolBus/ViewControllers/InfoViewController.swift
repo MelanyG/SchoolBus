@@ -34,7 +34,7 @@ extension InfoViewController: UITableViewDataSource, UITableViewDelegate {
         } else if section == 2 {
             return 3
         } else if section == 3 {
-            return currentRoute?.qtyOfPoints ?? 0
+            return (currentRoute?.qtyOfPoints)! - 1 ?? 0
         }
         return 0
     }
@@ -48,7 +48,7 @@ extension InfoViewController: UITableViewDataSource, UITableViewDelegate {
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FrameCell.self)) as! FrameCell
             if indexPath.row == 1, let count = currentRoute?.qtyOfPoints, count > 0 {
-                model = PointViewModel(with: currentRoute?.points?[count - 1], and: indexPath.row)
+                model = PointViewModel(with: currentRoute?.points?[count - 2], and: indexPath.row)
                 cell.configure(with: model)
             } else {
                 cell.configure(with: model)
