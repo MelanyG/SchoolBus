@@ -15,7 +15,6 @@ import ObjectMapper_Realm
 class DayRouts: Object, Mappable {
     
     var routs: List<RouteModel>?
-//    var points: List<PointModel>?
     var date: Date = Date()
     var records: Int = 0
     
@@ -25,15 +24,6 @@ class DayRouts: Object, Mappable {
     
     func mapping(map: Map) {
         routs <- (map[SBConstants.ModelConstants.DayRouteFast], ListTransform<RouteModel>())
-//        points <- (map[SBConstants.ModelConstants.DayComps], ListTransform<PointModel>())
         records <- (map[SBConstants.ModelConstants.DayRoutsCount])
     }
-    
-//    func connectRoutsWithPoints() {
-//        if let routs = routs, let points = points {
-//            for rout in routs {
-//                rout.selectMyPoints(pointsArray: Array(points))
-//            }
-//        }
-//    }
 }

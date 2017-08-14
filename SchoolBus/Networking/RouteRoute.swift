@@ -55,7 +55,9 @@ enum RouteRoute: Route {
             var params = "Session_Ident=\(sessionID)"
             params += "&page=1"
             params += "&rows=100000000"
-            params += "&sidx=Pos_Id"
+            params += "&sidx=Ext_Code"
+            params += "&ByObserver=1"
+            params += "&sord=asc"
             params += "&Route_Id=\(routeID)"
             return params
         }

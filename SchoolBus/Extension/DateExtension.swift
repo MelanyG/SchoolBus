@@ -75,7 +75,12 @@ extension Date {
         }
         return 0
     }
-   func minutes(from date: Date) -> Int {
+    
+    static func isDate(date: Date, between startDate: Date, and endDate: Date) -> Bool {
+        return startDate.compare(date) == date.compare(endDate)
+    }
+    
+    func minutes(from date: Date) -> Int {
         return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
     }
 }

@@ -32,7 +32,6 @@ struct StateMachine {
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var idLable: UILabel!
     @IBOutlet weak var loginTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
@@ -184,7 +183,7 @@ class LoginViewController: UIViewController {
         }
         let group = DispatchGroup()
         group.enter()
-        for i in 1...SBConstants.numberOfDaysToLoad {
+        for i in 0...SBConstants.numberOfDaysToLoad {
             let day = Date().addNoOfDays(noOfDays: i)
             debugPrint("Start \(day)")
 
@@ -194,32 +193,32 @@ class LoginViewController: UIViewController {
                 switch result {
                 case .success(let value):
                     value.date = day
-                    for n in 0..<value.records {
-                        guard let route = value.routs?[n] else { return }
-                        routsWithPoint += 1
-                        NetworkManager.getCompsByRouteFast(route: String(route.routeNum), completion: { (result: DataResult<AllCompsModel>, statusCode: Int) in
-                            switch result {
-                            case .success(let comps):
-                                routsWithPoint -= 1
-                                route.points = comps.points
-                                debugPrint(route.beginTime)
-                            case .failure(let error):
-                                debugPrint(error)
-                                
-                            }
-                            if routsWithPoint == 0 {
-                                group.leave()
-                            }
-                        })
+//                    for n in 0..<value.records {
+//                        guard let route = value.routs?[n] else { return }
+//                        routsWithPoint += 1
+//                        NetworkManager.getCompsByRouteFast(route: String(route.routeNum), completion: { (result: DataResult<AllCompsModel>, statusCode: Int) in
+//                            switch result {
+//                            case .success(let comps):
+//                                routsWithPoint -= 1
+//                                route.points = comps.points
+//                                debugPrint(route.beginTime)
+//                            case .failure(let error):
+//                                debugPrint(error)
+//                                
+//                            }
+//                            if routsWithPoint == 0 {
+//                                group.leave()
+//                            }
+//                        })
 //                        let cur = Date()
 //                        debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
 
                         
-                    }
+//                    }
                     DatabaseManager.shared.addItem(dayItem: value)
                     if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
                         DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
-//                        group.leave()
+                        group.leave()
                     }
 
                 case .failure(let error):
@@ -242,51 +241,51 @@ class LoginViewController: UIViewController {
         })
     }
     
-    func getAllRoutes() {
-        if !NetworkManager.isConnectedToInternet() {
-            presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
-        }
-        let group = DispatchGroup()
-        group.enter()
-        for i in 1...SBConstants.numberOfDaysToLoad {
-            let day = Date().addNoOfDays(noOfDays: i)
-            debugPrint("Start \(day)")
-            let curDate = Date()
-            NetworkManager.getRoutesByDate(date: day.shortDate) {
-                (result: DataResult<DayRouts>, statusCode: Int) in
-                
-                switch result {
-                case .success(let value):
-                    value.date = day
-                    //                    value.connectRoutsWithPoints()
-                    let cur = Date()
-                    debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
-                    
-                    DatabaseManager.shared.addItem(dayItem: value)
-                    if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
-                        DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
-                        group.leave()
-                    }
-                    
-                case .failure(let error):
-                    switch statusCode {
-                    case DataStatusCode.Unauthorized.rawValue:
-                        debugPrint(error)
-                        
-                    default:
-                        debugPrint(error)
-                        break
-                    }
-                }
-                
-            }
-        }
-        group.notify(queue: DispatchQueue.main, execute: {
-            [weak self] in
-            self?.updateInterface()
-            self?.presentDetailViewController()
-        })
-    }
+//    func getAllRoutes() {
+//        if !NetworkManager.isConnectedToInternet() {
+//            presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
+//        }
+//        let group = DispatchGroup()
+//        group.enter()
+//        for i in 1...SBConstants.numberOfDaysToLoad {
+//            let day = Date().addNoOfDays(noOfDays: i)
+//            debugPrint("Start \(day)")
+//            let curDate = Date()
+//            NetworkManager.getRoutesByDate(date: day.shortDate) {
+//                (result: DataResult<DayRouts>, statusCode: Int) in
+//                
+//                switch result {
+//                case .success(let value):
+//                    value.date = day
+//                    //                    value.connectRoutsWithPoints()
+//                    let cur = Date()
+//                    debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
+//                    
+//                    DatabaseManager.shared.addItem(dayItem: value)
+//                    if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
+//                        DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
+//                        group.leave()
+//                    }
+//                    
+//                case .failure(let error):
+//                    switch statusCode {
+//                    case DataStatusCode.Unauthorized.rawValue:
+//                        debugPrint(error)
+//                        
+//                    default:
+//                        debugPrint(error)
+//                        break
+//                    }
+//                }
+//                
+//            }
+//        }
+//        group.notify(queue: DispatchQueue.main, execute: {
+//            [weak self] in
+//            self?.updateInterface()
+//            self?.presentDetailViewController()
+//        })
+//    }
     
     func presentAlerView(with text: String) {
         DispatchQueue.main.async { [weak self] in

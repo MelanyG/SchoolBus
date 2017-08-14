@@ -37,13 +37,6 @@ class RouteModel: Object, Mappable {
         distance <- map[SBConstants.ModelConstants.PointDistance]
         avgSpeed <- map[SBConstants.ModelConstants.RoutAverageSpeed]
         qtyOfPoints <- map[SBConstants.ModelConstants.CountComps]
-        points <- (map[SBConstants.ModelConstants.DayRouteFast], ListTransform<PointModel>())
+//        points <- (map[SBConstants.ModelConstants.DayRouteFast], ListTransform<PointModel>())
     }
-    
-//    func selectMyPoints(pointsArray: [PointModel]) {
-//        let myPoints = pointsArray.filter({
-//            $0.routeNum == routeNum
-//        })
-//        points = List(myPoints)
-//    }
 }

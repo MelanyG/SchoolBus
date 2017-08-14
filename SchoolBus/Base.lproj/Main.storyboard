@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Od4-Eh-0pG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Od4-Eh-0pG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -143,10 +143,6 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yvz-P4-3kr">
                                 <rect key="frame" x="0.0" y="84" width="375" height="216"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="2EE-ne-6ed" id="SHm-HN-6wC"/>
-                                    <outlet property="delegate" destination="2EE-ne-6ed" id="NbO-M4-QGF"/>
-                                </connections>
                             </pickerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bln-dc-WX7">
                                 <rect key="frame" x="0.0" y="300" width="375" height="318"/>
@@ -387,23 +383,43 @@
                                     <constraint firstItem="Une-Ak-b6N" firstAttribute="centerY" secondItem="FQF-60-Qsa" secondAttribute="centerY" constant="5" id="W3a-dR-Fqf"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1Y-YW-49y">
+                                <rect key="frame" x="0.0" y="300" width="375" height="318"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="co3-KG-hMm">
+                                        <rect key="frame" x="169" y="140.5" width="37" height="37"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.201528281" green="0.2256214023" blue="0.25651162859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="co3-KG-hMm" firstAttribute="centerX" secondItem="K1Y-YW-49y" secondAttribute="centerX" id="feS-LJ-B3c"/>
+                                    <constraint firstItem="co3-KG-hMm" firstAttribute="centerY" secondItem="K1Y-YW-49y" secondAttribute="centerY" id="slG-WU-vJY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Yvz-P4-3kr" firstAttribute="leading" secondItem="xtC-Qs-nhU" secondAttribute="leading" id="9q9-Cq-W9e"/>
                             <constraint firstItem="Bln-dc-WX7" firstAttribute="top" secondItem="Yvz-P4-3kr" secondAttribute="bottom" id="9wD-Dd-9qr"/>
+                            <constraint firstAttribute="trailing" secondItem="K1Y-YW-49y" secondAttribute="trailing" id="E8Z-QO-2tK"/>
+                            <constraint firstItem="G8v-mH-D7L" firstAttribute="top" secondItem="K1Y-YW-49y" secondAttribute="bottom" id="I2E-ch-dDy"/>
                             <constraint firstAttribute="trailing" secondItem="FQF-60-Qsa" secondAttribute="trailing" id="MAk-II-ZQ1"/>
                             <constraint firstAttribute="trailing" secondItem="Bln-dc-WX7" secondAttribute="trailing" id="aT4-jK-bmw"/>
                             <constraint firstItem="FQF-60-Qsa" firstAttribute="leading" secondItem="xtC-Qs-nhU" secondAttribute="leading" id="bNT-sE-KYV"/>
                             <constraint firstItem="Bln-dc-WX7" firstAttribute="leading" secondItem="xtC-Qs-nhU" secondAttribute="leading" id="c9B-iy-Lbm"/>
                             <constraint firstItem="G8v-mH-D7L" firstAttribute="top" secondItem="Bln-dc-WX7" secondAttribute="bottom" id="evy-DX-7o7"/>
+                            <constraint firstItem="K1Y-YW-49y" firstAttribute="leading" secondItem="xtC-Qs-nhU" secondAttribute="leading" id="gWU-9V-mty"/>
                             <constraint firstItem="Yvz-P4-3kr" firstAttribute="top" secondItem="FQF-60-Qsa" secondAttribute="bottom" id="h5t-sR-Tzk"/>
                             <constraint firstItem="FQF-60-Qsa" firstAttribute="top" secondItem="9Ke-j5-Ssb" secondAttribute="bottom" id="jPT-Pm-DUV"/>
                             <constraint firstAttribute="trailing" secondItem="Yvz-P4-3kr" secondAttribute="trailing" id="wex-R1-Ccl"/>
+                            <constraint firstItem="K1Y-YW-49y" firstAttribute="top" secondItem="Yvz-P4-3kr" secondAttribute="bottom" id="zFy-yY-9IS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Розклад" id="Jp6-a7-vPf"/>
                     <connections>
+                        <outlet property="blurView" destination="K1Y-YW-49y" id="nEQ-Go-wyt"/>
                         <outlet property="detailedTableView" destination="Bln-dc-WX7" id="yZT-DQ-D29"/>
                         <outlet property="routsPicker" destination="Yvz-P4-3kr" id="f1M-ED-JuH"/>
                     </connections>

@@ -12,13 +12,21 @@ class ScheduleViewController: UIViewController {
     
     @IBOutlet weak var detailedTableView: UITableView!
     @IBOutlet weak var routsPicker: UIPickerView!
+    @IBOutlet weak var blurView: UIView!
     
     var items: [RouteModel] = []
+    var sortedPoints: [PointModel]?
     var selectedElement: RouteModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getAllRouts(from: DatabaseManager.shared.items)
         selectedElement = items.count > 0 ? items[0] : nil
+        if items.count > 0 {
+            routsPicker.delegate = self
+            routsPicker.dataSource = self
+            loadItem()
+        }
         configureController()
     }
     
@@ -32,7 +40,7 @@ class ScheduleViewController: UIViewController {
                 }
             }
         }
-        items.sort(by: { $0.beginTime > $1.beginTime})
+//        items.sort(by: { $0.beginTime > $1.beginTime})
     }
     
     func configureController() {
@@ -43,10 +51,10 @@ class ScheduleViewController: UIViewController {
 
 extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if selectedElement?.qtyOfPoints == 0 {
+        if selectedElement?.points == nil || selectedElement?.points?.count ?? 0 == 0 {
             return 0
         }
-        return SBConstants.stableRowsInSchedule + (((selectedElement?.qtyOfPoints)! - 1) ?? 0)
+        return SBConstants.stableRowsInSchedule + (selectedElement?.qtyOfPoints ?? 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,7 +79,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }else if indexPath.row > 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PointCell.self)) as! PointCell
-            if indexPath.row > 3, let point = selectedElement?.points?[indexPath.row - SBConstants.stableRowsInSchedule] {
+            if indexPath.row > 3, let point = sortedPoints?[indexPath.row - SBConstants.stableRowsInSchedule] {
                 model = PointViewModel(with: point, and: indexPath.row)
                 cell.configure(with: model)
             }
@@ -92,6 +100,21 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func loadItem() {
+        self.blurView.isHidden = false
+        NetworkManager.getCompsByRouteFast(route: String(describing: selectedElement?.routeNum ?? 0), completion: { [unowned self] (result: DataResult<AllCompsModel>, statusCode: Int) in
+            switch result {
+            case .success(let comps):
+                self.selectedElement?.points = comps.points
+                self.sortedPoints = comps.points?.sorted(by: { $0.positionInRoute < $1.positionInRoute})
+                 self.detailedTableView.reloadData()
+                self.blurView.isHidden = true
+            case .failure(let error):
+                debugPrint(error)
+            }
+        })
+    }
+    
 }
 
 extension ScheduleViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -109,6 +132,10 @@ extension ScheduleViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.selectedElement = items[row]
-        detailedTableView.reloadData()
+        if self.selectedElement?.points != nil {
+            detailedTableView.reloadData()
+        } else {
+            loadItem()
+        }
     }
 }

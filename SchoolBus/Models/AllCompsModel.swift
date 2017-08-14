@@ -25,11 +25,4 @@ class AllCompsModel: Object, Mappable {
         error <-  map[SBConstants.ModelConstants.ErrorResponse]
         points <- (map[SBConstants.ModelConstants.DayRouteFast], ListTransform<PointModel>())
     }
-    
-    //    func selectMyPoints(pointsArray: [PointModel]) {
-    //        let myPoints = pointsArray.filter({
-    //            $0.routeNum == routeNum
-    //        })
-    //        points = List(myPoints)
-    //    }
 }

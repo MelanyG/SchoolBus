@@ -26,6 +26,5 @@ class Session: Object, Mappable {
     func mapping(map: Map) {
         sessionId <- map[SBConstants.ModelConstants.SessionID]
         error <-  map[SBConstants.ModelConstants.ErrorResponse]
-
     }
 }

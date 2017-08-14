@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SBConstants {
-
+    
     static let callCenterNumber = "555-555-5555"
     static let stableRowsInSchedule: Int = 4
     static let heighStableRowsInSchedule: CGFloat = 70.0
@@ -51,11 +51,11 @@ class SBConstants {
         static let PointAddress = "Address"
         static let PointName = "Comp_Name"
         static let PointTimeArrival = "Time_Arrival"
-//        static let PointTimeArrivalFact = "Time_Arrival_fact"
+        static let PointObserverName = "Observer_Name"
+        static let PointObserverPhone = "Phone"
         static let PointLatitude = "lat"
         static let PointLongitude = "lng"
         static let PointDistance = "distance"
-//        static let PointTimeArrivalToPoint = "Time_Arrival"
         static let PointTravelTime = "Travel_Time"
         static let PointIsObserved = "Is_Observed"
         static let SessionID = "Session_Ident"

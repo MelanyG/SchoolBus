@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SchoolBus/ViewControllers/CallCenterViewController.swift"
-            timestampString = "521905765.608282"
+            filePath = "SchoolBus/ViewControllers/ScheduleViewController.swift"
+            timestampString = "524374708.918015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "imageTapped(gesture:)"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,94 +35,94 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SchoolBus/Views/Cell/DetaleImageCell.swift"
-            timestampString = "522183245.037134"
+            filePath = "SchoolBus/ViewControllers/ScheduleViewController.swift"
+            timestampString = "524374708.918015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "loadItem()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SchoolBus/Models/PointModel.swift"
+            timestampString = "524371240.149228"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "mapping(map:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SchoolBus/ViewControllers/ScheduleViewController.swift"
+            timestampString = "524374708.918015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SchoolBus/ViewControllers/ScheduleViewController.swift"
+            timestampString = "524374708.918015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
-            landmarkName = "configure(with:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SchoolBus/ViewModel/RouteViewModel.swift"
-            timestampString = "522183362.411904"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "routeDetails"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SchoolBus/ViewControllers/LoginViewController.swift"
-            timestampString = "522186850.542723"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "configureCachedData()"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "SchoolBus.LoginViewController.configureCachedData () -&gt; ()"
+                  symbolName = "SchoolBus.ScheduleViewController.tableView (__ObjC.UITableView, numberOfRowsInSection : Swift.Int) -&gt; Swift.Int"
                   moduleName = "SchoolBus"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/ViewControllers/LoginViewController.swift"
-                  timestampString = "522187027.495836"
+                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/ViewControllers/ScheduleViewController.swift"
+                  timestampString = "524373920.863362"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "15">
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "891">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "SchoolBus.LoginViewController.configureCachedData () -&gt; ()"
+                  symbolName = "SchoolBus.ScheduleViewController.(tableView (__ObjC.UITableView, numberOfRowsInSection : Swift.Int) -&gt; Swift.Int).(implicit closure #3)"
                   moduleName = "SchoolBus"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/ViewControllers/LoginViewController.swift"
-                  timestampString = "522187027.497609"
+                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/ViewControllers/ScheduleViewController.swift"
+                  timestampString = "524373920.865673"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "10">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SchoolBus/ViewControllers/LoginViewController.swift"
-            timestampString = "522188687.31912"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "signInPressed(_:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
