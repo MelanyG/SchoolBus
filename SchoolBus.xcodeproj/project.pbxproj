@@ -40,6 +40,7 @@
 		369C01E21F1C268D00432D2B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369C01E11F1C268D00432D2B /* MapKit.framework */; };
 		36F09B511F37A0A2001073FF /* AllCompsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F09B501F37A0A2001073FF /* AllCompsModel.swift */; };
 		36F09B531F37B329001073FF /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F09B521F37B329001073FF /* NavigationManager.swift */; };
+		36F09B551F424770001073FF /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F09B541F424770001073FF /* Loader.swift */; };
 		39C609531EDC301E00105DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C609521EDC301E00105DD7 /* AppDelegate.swift */; };
 		39C609581EDC301E00105DD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39C609561EDC301E00105DD7 /* Main.storyboard */; };
 		39C6095A1EDC301E00105DD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39C609591EDC301E00105DD7 /* Assets.xcassets */; };
@@ -83,6 +84,7 @@
 		369C01E11F1C268D00432D2B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		36F09B501F37A0A2001073FF /* AllCompsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCompsModel.swift; sourceTree = "<group>"; };
 		36F09B521F37B329001073FF /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		36F09B541F424770001073FF /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		39C6094F1EDC301E00105DD7 /* SchoolBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C609521EDC301E00105DD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39C609571EDC301E00105DD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				36F09B521F37B329001073FF /* NavigationManager.swift */,
 				36396C881EE36A7B0035ACF2 /* CacheManager.swift */,
 				36396C8A1EE36B260035ACF2 /* DatabaseManager.swift */,
+				36F09B541F424770001073FF /* Loader.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				360710911EF6F460007EC0C0 /* DateExtension.swift in Sources */,
 				36396C891EE36A7B0035ACF2 /* CacheManager.swift in Sources */,
 				36396C801EE35C640035ACF2 /* DetailViewController.swift in Sources */,
+				36F09B551F424770001073FF /* Loader.swift in Sources */,
 				369C01BF1F129C6400432D2B /* CallCenterViewController.swift in Sources */,
 				360710931EF7244B007EC0C0 /* DayRouts.swift in Sources */,
 				369C01D61F1BD8F500432D2B /* UserModel.swift in Sources */,

@@ -999,10 +999,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Uel-UW-Tm1" id="eaD-Tw-Z2B"/>
-                                    <outlet property="delegate" destination="Uel-UW-Tm1" id="u3j-ZF-dbi"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1013,6 +1009,9 @@
                             <constraint firstItem="R7Y-K7-VmN" firstAttribute="top" secondItem="V8j-x0-PXv" secondAttribute="bottom" id="yhQ-ZW-v9W"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailedTableView" destination="V8j-x0-PXv" id="FLh-mp-VJI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQX-JJ-6gD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

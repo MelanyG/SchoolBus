@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ScheduleViewController: UIViewController {
     
@@ -40,7 +41,7 @@ class ScheduleViewController: UIViewController {
                 }
             }
         }
-//        items.sort(by: { $0.beginTime > $1.beginTime})
+        items.sort(by: { $0.beginTime < $1.beginTime})
     }
     
     func configureController() {
@@ -54,7 +55,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
         if selectedElement?.points == nil || selectedElement?.points?.count ?? 0 == 0 {
             return 0
         }
-        return SBConstants.stableRowsInSchedule + (selectedElement?.qtyOfPoints ?? 0)
+        return SBConstants.stableRowsInSchedule + (selectedElement?.points?.count ?? 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,19 +103,14 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     
     func loadItem() {
         self.blurView.isHidden = false
-        NetworkManager.getCompsByRouteFast(route: String(describing: selectedElement?.routeNum ?? 0), completion: { [unowned self] (result: DataResult<AllCompsModel>, statusCode: Int) in
-            switch result {
-            case .success(let comps):
-                self.selectedElement?.points = comps.points
-                self.sortedPoints = comps.points?.sorted(by: { $0.positionInRoute < $1.positionInRoute})
-                 self.detailedTableView.reloadData()
-                self.blurView.isHidden = true
-            case .failure(let error):
-                debugPrint(error)
-            }
-        })
+        Loader.loadPoints(for: selectedElement?.routeNum ?? 0) {
+            [unowned self] (result: List<PointModel>?) in
+            self.selectedElement?.points = result
+            self.sortedPoints = result?.sorted(by: { $0.positionInRoute < $1.positionInRoute})
+            self.detailedTableView.reloadData()
+            self.blurView.isHidden = true
+        }
     }
-    
 }
 
 extension ScheduleViewController: UIPickerViewDelegate, UIPickerViewDataSource {

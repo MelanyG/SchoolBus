@@ -81,6 +81,13 @@ extension Date {
     }
     
     func minutes(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+    }
+    
+    func theDayisTheSame() -> Bool {
+        if (Calendar.current.dateComponents([.year], from: self) == Calendar.current.dateComponents([.year], from: Date())) && (Calendar.current.dateComponents([.month], from: self) == Calendar.current.dateComponents([.month], from: Date())) && (Calendar.current.dateComponents([.day], from: self) == Calendar.current.dateComponents([.day], from: Date())) {
+            return true
+        }
+        return false
     }
 }

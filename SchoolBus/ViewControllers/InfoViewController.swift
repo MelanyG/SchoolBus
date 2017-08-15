@@ -10,14 +10,21 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    var currentRoute: RouteModel? = DatabaseManager.shared.items[0].routs?[0]
-    
+    var currentRoute: RouteModel?
+    @IBOutlet weak var detailedTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
     
+    private func getRoute() {
+        currentRoute = Loader.getClosestRoute()
+        if currentRoute != nil {
+            detailedTableView.delegate = self
+            detailedTableView.dataSource = self
+        }
+    }
 }
 
 extension InfoViewController: UITableViewDataSource, UITableViewDelegate {

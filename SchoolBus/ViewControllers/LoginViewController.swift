@@ -61,9 +61,6 @@ class LoginViewController: UIViewController {
             passTxtField.text = session.password
         }
     }
-    //    func configureLink() {
-    //        linkTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.init(colorLiteralRed: 51.0/255.0, green: 180.0/255.0, blue: 227.0/225.0, alpha: 1.0), NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
-    //    }
     
     @IBAction func signInPressed(_ sender: UIButton) {
         self.blurView.isHidden = false
@@ -71,8 +68,6 @@ class LoginViewController: UIViewController {
         case .Initial, .Invalid:
             if let session = CacheManager.currentSession {
                 stateMachine.updateState(state: .Authorised)
-                //                updateInterface()
-                //                getAllRoutes()
                 getAll()
                 debugPrint("Current session: \(session.sessionId)")
             } else {
@@ -88,7 +83,6 @@ class LoginViewController: UIViewController {
                             case DataStatusCode.WrongData.rawValue :
                                 self?.presentAlerView(with: SBConstants.LoginConstants.WrongDataInserted)
                                 self?.stateMachine.updateState(state: .Invalid)
-                            //                                self?.updateInterface()
                             case DataStatusCode.OK.rawValue:
                                 if self?.switcher.isOn ?? false{
                                     value.email = mail
@@ -96,8 +90,6 @@ class LoginViewController: UIViewController {
                                     CacheManager.currentSession = value
                                 }
                                 self?.stateMachine.updateState(state: .Authorised)
-                                //                                self?.updateInterface()
-                                //                                self?.getAllRoutes()
                                 self?.getAll()
                             default: break
                             }
@@ -105,7 +97,6 @@ class LoginViewController: UIViewController {
                             switch statusCode {
                             case DataStatusCode.Unauthorized.rawValue:
                                 self?.stateMachine.updateState(state: .Initial)
-                                //                                self?.updateInterface()
                                 CacheManager.cleanAll()
                             default:
                                 debugPrint(error)
@@ -124,7 +115,6 @@ class LoginViewController: UIViewController {
                         debugPrint(value)
                         self?.stateMachine.updateState(state: .Initial)
                         CacheManager.cleanAll()
-                    //                        self?.updateInterface()
                     case .failure(let error):
                         debugPrint(error)
                     }
@@ -150,19 +140,12 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotPasswordPressed(_ sender: UIButton) {
-        
         presentForgotViewController()
     }
     
-    func presentDetailViewController() {
-        
-        let storyboard = UIStoryboard(name: SBConstants.Main, bundle: nil)
-        if let tabBarController = storyboard.instantiateViewController(withIdentifier:String(describing: UITabBarController.self)) as? UITabBarController {
-            self.blurView.isHidden = true
-            navigationController?.pushViewController(tabBarController, animated: true)
-        }
-        
-    }
+    func presentNextViewController() {
+        NavigationManager.checkNavigationDirection(from: self)
+   }
     
     func presentForgotViewController() {
         
@@ -177,7 +160,6 @@ class LoginViewController: UIViewController {
     }
     
     func getAll() {
-        var routsWithPoint: Int = 0
         if !NetworkManager.isConnectedToInternet() {
             presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
         }
@@ -185,107 +167,19 @@ class LoginViewController: UIViewController {
         group.enter()
         for i in 0...SBConstants.numberOfDaysToLoad {
             let day = Date().addNoOfDays(noOfDays: i)
-            debugPrint("Start \(day)")
-
-            NetworkManager.getRoutesByDateFast(date: day.shortDate) {
-                (result: DataResult<DayRouts>, statusCode: Int) in
-                
-                switch result {
-                case .success(let value):
-                    value.date = day
-//                    for n in 0..<value.records {
-//                        guard let route = value.routs?[n] else { return }
-//                        routsWithPoint += 1
-//                        NetworkManager.getCompsByRouteFast(route: String(route.routeNum), completion: { (result: DataResult<AllCompsModel>, statusCode: Int) in
-//                            switch result {
-//                            case .success(let comps):
-//                                routsWithPoint -= 1
-//                                route.points = comps.points
-//                                debugPrint(route.beginTime)
-//                            case .failure(let error):
-//                                debugPrint(error)
-//                                
-//                            }
-//                            if routsWithPoint == 0 {
-//                                group.leave()
-//                            }
-//                        })
-//                        let cur = Date()
-//                        debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
-
-                        
-//                    }
-                    DatabaseManager.shared.addItem(dayItem: value)
-                    if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
-                        DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
-                        group.leave()
-                    }
-
-                case .failure(let error):
-                    switch statusCode {
-                    case DataStatusCode.Unauthorized.rawValue:
-                        debugPrint(error)
-                        
-                    default:
-                        debugPrint(error)
-                        break
-                    }
+            Loader.loadRoutes(for: day, completion: { (dayRoots) in
+                if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
+                    DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
+                    group.leave()
                 }
-                
-            }
+            })
         }
         group.notify(queue: DispatchQueue.main, execute: {
             [weak self] in
             self?.updateInterface()
-            self?.presentDetailViewController()
+            self?.presentNextViewController()
         })
     }
-    
-//    func getAllRoutes() {
-//        if !NetworkManager.isConnectedToInternet() {
-//            presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
-//        }
-//        let group = DispatchGroup()
-//        group.enter()
-//        for i in 1...SBConstants.numberOfDaysToLoad {
-//            let day = Date().addNoOfDays(noOfDays: i)
-//            debugPrint("Start \(day)")
-//            let curDate = Date()
-//            NetworkManager.getRoutesByDate(date: day.shortDate) {
-//                (result: DataResult<DayRouts>, statusCode: Int) in
-//                
-//                switch result {
-//                case .success(let value):
-//                    value.date = day
-//                    //                    value.connectRoutsWithPoints()
-//                    let cur = Date()
-//                    debugPrint("End of \(curDate) - \(cur) difference - \(cur.minutes(from: curDate))")
-//                    
-//                    DatabaseManager.shared.addItem(dayItem: value)
-//                    if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
-//                        DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
-//                        group.leave()
-//                    }
-//                    
-//                case .failure(let error):
-//                    switch statusCode {
-//                    case DataStatusCode.Unauthorized.rawValue:
-//                        debugPrint(error)
-//                        
-//                    default:
-//                        debugPrint(error)
-//                        break
-//                    }
-//                }
-//                
-//            }
-//        }
-//        group.notify(queue: DispatchQueue.main, execute: {
-//            [weak self] in
-//            self?.updateInterface()
-//            self?.presentDetailViewController()
-//        })
-//    }
     
     func presentAlerView(with text: String) {
         DispatchQueue.main.async { [weak self] in

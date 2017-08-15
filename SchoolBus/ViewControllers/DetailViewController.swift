@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet var segmentedControl: UISegmentedControl!
-    private lazy var infoViewController: InfoViewController = {
+    public lazy var infoViewController: InfoViewController = {
 
         let storyboard = UIStoryboard(name: SBConstants.Main, bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: String(describing: InfoViewController.self)) as! InfoViewController
