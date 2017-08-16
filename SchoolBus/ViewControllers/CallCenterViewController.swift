@@ -14,6 +14,8 @@ class CallCenterViewController: UIViewController {
     @IBOutlet weak var phoneButton: UIImageView!
     @IBOutlet weak var phoneDescription: UILabel!
     @IBOutlet weak var customBarTitle: UILabel!
+    @IBOutlet weak var commonView: UIView!
+    
     var heightOfTitle: CGFloat = 64.0
     
     override func viewDidLoad() {
@@ -24,11 +26,14 @@ class CallCenterViewController: UIViewController {
     }
     
     func configure() {
-        title = SBConstants.LoginConstants.ForgotPassword
-        customNavigationHeight.constant = heightOfTitle
+//        title = SBConstants.LoginConstants.ForgotPassword
+//        customNavigationHeight.constant = heightOfTitle
+        
         if heightOfTitle == 0 {
             customBarTitle.text = ""
             phoneDescription.text = SBConstants.LoginConstants.CallCenter
+        } else {
+            self.commonView.backgroundColor = UIColor(red: 241.0/255.0, green: 241.0/255.0, blue: 245.0/255.0, alpha: 1)
         }
     }
     
@@ -41,7 +46,7 @@ class CallCenterViewController: UIViewController {
                     UIApplication.shared.openURL(url)
                 }
             }
-            
         }
     }
+    
 }

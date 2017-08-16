@@ -5,6 +5,7 @@
 //  Created by Melaniia Hulianovych on 5/29/17.
 //  Copyright © 2017 Melaniia Hulianovych. All rights reserved.
 //
+
 import Foundation
 import UIKit
 
@@ -14,8 +15,6 @@ enum State {
     case UnAuthorised
     case Invalid
 }
-
-
 
 struct StateMachine {
     
@@ -38,6 +37,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var switcher: UISwitch!
     @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var rememberMe: UILabel!
+    @IBOutlet weak var forgotPassword: UIButton!
+    @IBOutlet weak var loginImage: UIImageView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var incorrectPasswordLabel: UILabel!
     
     var stateMachine: StateMachine = StateMachine()
     
@@ -45,6 +49,23 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         configureCachedData()
         
+        /// Login and password text fields borders
+        let loginBorder = CALayer()
+        let passwordBorder = CALayer()
+        let width = CGFloat(1)
+        loginBorder.borderColor = UIColor.lightGray.cgColor
+        passwordBorder.borderColor = UIColor.lightGray.cgColor
+        
+        loginBorder.frame = CGRect(x: 0, y: self.loginTxtField.frame.size.height - width, width: self.loginTxtField.frame.size.width, height: self.loginTxtField.frame.size.height)
+        passwordBorder.frame = CGRect(x: 0, y: self.passTxtField.frame.size.height - width, width: self.passTxtField.frame.size.width, height: self.passTxtField.frame.size.height)
+        loginBorder.borderWidth = width
+        passwordBorder.borderWidth = width
+        
+        self.loginTxtField.layer.addSublayer(loginBorder)
+        self.loginTxtField.layer.masksToBounds = true
+        self.passTxtField.layer.addSublayer(passwordBorder)
+        self.passTxtField.layer.masksToBounds = true
+    
         if !NerworkManager.isConnectedToInternet() {
             presentAlerView(with: SBConstants.LoginConstants.InternetConnectionAbsence)
         }
@@ -54,6 +75,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         title = ""
         navigationController?.setNavigationBarHidden(true, animated: false)
+        self.loginButton.layer.cornerRadius = 15
     }
     
     func configureCachedData() {
@@ -67,13 +89,27 @@ class LoginViewController: UIViewController {
     //    }
     
     @IBAction func signInPressed(_ sender: UIButton) {
+        
+        /// Hide Login elements while signing in
+        self.loginTxtField.isHidden = true
+        self.passTxtField.isHidden = true
+        self.signInButton.isHidden = true
+        self.rememberMe.isHidden = true
+        self.switcher.isHidden = true
+        self.forgotPassword.isHidden = true
+        
         self.blurView.isHidden = false
+        self.loginImage.isHidden = false
+        
         switch stateMachine.currentState {
         case .Initial, .Invalid:
             if let session = CacheManager.currentSession {
                 stateMachine.updateState(state: .Authorised)
                 //                updateInterface()
                 getAllRoutes()
+                MapManager.getRouteData()
+                ProfileManager.getProfileData()
+                MapManager.getSchoolBusPosition()
                 debugPrint("Current session: \(session.sessionId)")
             } else {
                 if checkForValidInPutData() {
@@ -170,6 +206,8 @@ class LoginViewController: UIViewController {
             forgotViewController.heightOfTitle = 0.0
             navigationController?.setNavigationBarHidden(false, animated: true)
             title = SBConstants.LoginConstants.BackButtonTitle
+            navigationController?.navigationBar.tintColor = UIColor.orange
+            
             navigationController?.pushViewController(forgotViewController, animated: true)
         }
         
@@ -223,6 +261,18 @@ class LoginViewController: UIViewController {
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertView.addAction(action)
             self?.present(alertView, animated: true, completion: nil)
+        
+            /// Show login elements
+            self?.passTxtField.textColor = text == SBConstants.LoginConstants.WrongDataInserted ? UIColor.red : UIColor.black
+            self?.passTxtField.layer.sublayers?.map { $0.borderColor = text == SBConstants.LoginConstants.WrongDataInserted ? UIColor.red.cgColor : UIColor.lightGray.cgColor }
+            self?.incorrectPasswordLabel.text = text == SBConstants.LoginConstants.WrongDataInserted ? "Ви ввели невірний пароль" : ""
+            self?.loginTxtField.isHidden = false
+            self?.passTxtField.isHidden = false
+            self?.signInButton.isHidden = false
+            self?.rememberMe.isHidden = false
+            self?.switcher.isHidden = false
+            self?.forgotPassword.isHidden = false
+            self?.blurView.isHidden = true
         }
     }
     
@@ -239,5 +289,5 @@ class LoginViewController: UIViewController {
         }
         return true
     }
+    
 }
-

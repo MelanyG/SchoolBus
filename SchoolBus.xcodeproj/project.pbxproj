@@ -43,7 +43,15 @@
 		39C6095A1EDC301E00105DD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39C609591EDC301E00105DD7 /* Assets.xcassets */; };
 		39C6095D1EDC301E00105DD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39C6095B1EDC301E00105DD7 /* LaunchScreen.storyboard */; };
 		39C6096A1EDC3B4D00105DD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C609691EDC3B4D00105DD7 /* LoginViewController.swift */; };
+		5E15A6E71F31CEED0095B978 /* RoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15A6E61F31CEED0095B978 /* RoutePoint.swift */; };
+		5E1910871F33593A00BEA210 /* DeliveryPointCallout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E1910861F33593A00BEA210 /* DeliveryPointCallout.xib */; };
+		5E1910891F33717600BEA210 /* MovementCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1910881F33717600BEA210 /* MovementCallout.swift */; };
+		5E19108B1F3372D400BEA210 /* MovementCallout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E19108A1F3372D400BEA210 /* MovementCallout.xib */; };
+		5E19108D1F337A5500BEA210 /* DepartureCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E19108C1F337A5500BEA210 /* DepartureCallout.swift */; };
+		5E19108F1F337A7600BEA210 /* DepartureCallout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E19108E1F337A7600BEA210 /* DepartureCallout.xib */; };
+		5E24D0A61F33580800CE933C /* DeliveryPointCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E24D0A51F33580800CE933C /* DeliveryPointCallout.swift */; };
 		5E7501F81F27A0350098EE31 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7501F71F27A0350098EE31 /* MapManager.swift */; };
+		5EC060AA1F41889600113123 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC060A91F41889600113123 /* ProfileManager.swift */; };
 		772C44B623788D224F93C27F /* Pods_SchoolBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C698F3D154F60600B4305F /* Pods_SchoolBus.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +94,15 @@
 		39C6095C1EDC301E00105DD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39C6095E1EDC301E00105DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39C609691EDC3B4D00105DD7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5E15A6E61F31CEED0095B978 /* RoutePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutePoint.swift; sourceTree = "<group>"; };
+		5E1910861F33593A00BEA210 /* DeliveryPointCallout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DeliveryPointCallout.xib; path = ../../ViewControllers/DeliveryPointCallout.xib; sourceTree = "<group>"; };
+		5E1910881F33717600BEA210 /* MovementCallout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementCallout.swift; sourceTree = "<group>"; };
+		5E19108A1F3372D400BEA210 /* MovementCallout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovementCallout.xib; sourceTree = "<group>"; };
+		5E19108C1F337A5500BEA210 /* DepartureCallout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureCallout.swift; sourceTree = "<group>"; };
+		5E19108E1F337A7600BEA210 /* DepartureCallout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepartureCallout.xib; sourceTree = "<group>"; };
+		5E24D0A51F33580800CE933C /* DeliveryPointCallout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeliveryPointCallout.swift; path = ../../ViewControllers/DeliveryPointCallout.swift; sourceTree = "<group>"; };
 		5E7501F71F27A0350098EE31 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
+		5EC060A91F41889600113123 /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		6C51F305B281F2FC6195E297 /* Pods-SchoolBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SchoolBus/Pods-SchoolBus.debug.xcconfig"; sourceTree = "<group>"; };
 		D235DFCFBD76DBDCCAE5097B /* Pods-SchoolBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SchoolBus/Pods-SchoolBus.release.xcconfig"; sourceTree = "<group>"; };
 		D6C698F3D154F60600B4305F /* Pods_SchoolBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +156,7 @@
 				36396C7D1EE34BC20035ACF2 /* NerworkManager.swift */,
 				36396C881EE36A7B0035ACF2 /* CacheManager.swift */,
 				36396C8A1EE36B260035ACF2 /* DatabaseManager.swift */,
+				5EC060A91F41889600113123 /* ProfileManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -147,6 +164,7 @@
 		36396C851EE3694E0035ACF2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E15A6E61F31CEED0095B978 /* RoutePoint.swift */,
 				360710921EF7244B007EC0C0 /* DayRouts.swift */,
 				36396C8E1EE46E370035ACF2 /* ErrorResponse.swift */,
 				360710891EF6E648007EC0C0 /* PointModel.swift */,
@@ -180,6 +198,12 @@
 		369C01C61F12B7BB00432D2B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5E1910881F33717600BEA210 /* MovementCallout.swift */,
+				5E19108A1F3372D400BEA210 /* MovementCallout.xib */,
+				5E19108C1F337A5500BEA210 /* DepartureCallout.swift */,
+				5E19108E1F337A7600BEA210 /* DepartureCallout.xib */,
+				5E24D0A51F33580800CE933C /* DeliveryPointCallout.swift */,
+				5E1910861F33593A00BEA210 /* DeliveryPointCallout.xib */,
 				369C01C71F12B7BB00432D2B /* NotificationCell.swift */,
 				369C01C81F12B7BB00432D2B /* StartPointCell.swift */,
 				369C01D11F1BD49F00432D2B /* ProfileCell.swift */,
@@ -244,6 +268,7 @@
 		39C609661EDC38D800105DD7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				369C01DD1F1C1EBB00432D2B /* MapViewController.swift */,
 				39C609691EDC3B4D00105DD7 /* LoginViewController.swift */,
 				360710871EF6CD54007EC0C0 /* ScheduleViewController.swift */,
 				36396C7F1EE35C640035ACF2 /* DetailViewController.swift */,
@@ -251,7 +276,6 @@
 				369C01C21F12B4D400432D2B /* NotificationViewController.swift */,
 				369C01D31F1BD73B00432D2B /* ProfileViewController.swift */,
 				369C01DB1F1BE89100432D2B /* InfoViewController.swift */,
-				369C01DD1F1C1EBB00432D2B /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -334,6 +358,9 @@
 			files = (
 				39C6095D1EDC301E00105DD7 /* LaunchScreen.storyboard in Resources */,
 				39C6095A1EDC301E00105DD7 /* Assets.xcassets in Resources */,
+				5E19108B1F3372D400BEA210 /* MovementCallout.xib in Resources */,
+				5E1910871F33593A00BEA210 /* DeliveryPointCallout.xib in Resources */,
+				5E19108F1F337A7600BEA210 /* DepartureCallout.xib in Resources */,
 				39C609581EDC301E00105DD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,18 +422,22 @@
 			files = (
 				3607108A1EF6E649007EC0C0 /* PointModel.swift in Sources */,
 				3607108C1EF6EAA0007EC0C0 /* RouteRoute.swift in Sources */,
+				5E19108D1F337A5500BEA210 /* DepartureCallout.swift in Sources */,
 				369C01D81F1BDC0300432D2B /* ProfileViewModel.swift in Sources */,
 				369C01CA1F12B7BB00432D2B /* NotificationCell.swift in Sources */,
 				369C01BD1F1176BA00432D2B /* RouteViewModel.swift in Sources */,
 				369C01DC1F1BE89100432D2B /* InfoViewController.swift in Sources */,
+				5E15A6E71F31CEED0095B978 /* RoutePoint.swift in Sources */,
 				366CEE621F01A3520096EBD5 /* DateTransform.swift in Sources */,
 				360710881EF6CD55007EC0C0 /* ScheduleViewController.swift in Sources */,
 				369C01D41F1BD73B00432D2B /* ProfileViewController.swift in Sources */,
 				369C01CE1F12B7CA00432D2B /* SBConstants.swift in Sources */,
+				5E1910891F33717600BEA210 /* MovementCallout.swift in Sources */,
 				36396C8D1EE36F2B0035ACF2 /* Server.swift in Sources */,
 				369C01CB1F12B7BB00432D2B /* StartPointCell.swift in Sources */,
 				369C01C31F12B4D400432D2B /* NotificationViewController.swift in Sources */,
 				36396C871EE3694E0035ACF2 /* Session.swift in Sources */,
+				5E24D0A61F33580800CE933C /* DeliveryPointCallout.swift in Sources */,
 				36396C821EE35F5B0035ACF2 /* UserRoute.swift in Sources */,
 				369C01DE1F1C1EBB00432D2B /* MapViewController.swift in Sources */,
 				5E7501F81F27A0350098EE31 /* MapManager.swift in Sources */,
@@ -426,6 +457,7 @@
 				360710861EF6A9BC007EC0C0 /* RouteModel.swift in Sources */,
 				39C609531EDC301E00105DD7 /* AppDelegate.swift in Sources */,
 				36396C8B1EE36B260035ACF2 /* DatabaseManager.swift in Sources */,
+				5EC060AA1F41889600113123 /* ProfileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,7 +581,7 @@
 			baseConfigurationReference = 6C51F305B281F2FC6195E297 /* Pods-SchoolBus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SchoolBus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -564,7 +596,7 @@
 			baseConfigurationReference = D235DFCFBD76DBDCCAE5097B /* Pods-SchoolBus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SchoolBus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

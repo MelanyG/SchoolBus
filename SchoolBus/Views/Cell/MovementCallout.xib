@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="Cir-Op-afZ" customClass="MovementCallout" customModule="SchoolBus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movementCallout" translatesAutoresizingMaskIntoConstraints="NO" id="b1d-LE-j5h">
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="80"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biw-RI-EZM">
+                    <rect key="frame" x="10" y="7" width="44" height="35"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="dGA-HH-5Cy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 хв. / 4.5 км" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTR-Eq-uw9">
+                    <rect key="frame" x="76" y="33" width="147" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ZTR-Eq-uw9" firstAttribute="leading" secondItem="Biw-RI-EZM" secondAttribute="trailing" constant="22" id="18v-hX-ooS"/>
+                <constraint firstAttribute="trailing" secondItem="ZTR-Eq-uw9" secondAttribute="trailing" constant="27" id="54y-2P-SlS"/>
+                <constraint firstItem="b1d-LE-j5h" firstAttribute="top" secondItem="Cir-Op-afZ" secondAttribute="top" id="86f-iE-b5W"/>
+                <constraint firstAttribute="bottom" secondItem="ZTR-Eq-uw9" secondAttribute="bottom" constant="27" id="C1q-Sr-Vgj"/>
+                <constraint firstItem="Biw-RI-EZM" firstAttribute="leading" secondItem="Cir-Op-afZ" secondAttribute="leading" constant="10" id="UG0-Dv-J3p"/>
+                <constraint firstAttribute="bottom" secondItem="b1d-LE-j5h" secondAttribute="bottom" id="Zup-TO-kSV"/>
+                <constraint firstItem="ZTR-Eq-uw9" firstAttribute="top" secondItem="Cir-Op-afZ" secondAttribute="top" constant="33" id="evQ-PI-8qp"/>
+                <constraint firstAttribute="trailing" secondItem="b1d-LE-j5h" secondAttribute="trailing" id="k6v-FN-zg5"/>
+                <constraint firstItem="Biw-RI-EZM" firstAttribute="top" secondItem="Cir-Op-afZ" secondAttribute="top" constant="7" id="nOY-H1-NtW"/>
+                <constraint firstItem="b1d-LE-j5h" firstAttribute="leading" secondItem="Cir-Op-afZ" secondAttribute="leading" id="oPU-Gb-AAr"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="speed" destination="Biw-RI-EZM" id="zAP-WM-MCy"/>
+                <outlet property="timeAndDistance" destination="ZTR-Eq-uw9" id="9bi-s9-h3V"/>
+            </connections>
+            <point key="canvasLocation" x="0.0" y="-77"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="movementCallout" width="184" height="59"/>
+    </resources>
+</document>

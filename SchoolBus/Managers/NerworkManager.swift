@@ -13,7 +13,8 @@ import ObjectMapper
 
 enum Hosts: String {
     case Development = "https://ant-logistics.com"
-    case ActiveServer = "https://main.ant-logistics.com/AntLogistics/AntService.svc"
+//    case ActiveServer = "https://main.ant-logistics.com/AntLogistics/AntService.svc"
+    case ActiveServer = "https://calc.ant-logistics.com/AntLogistics/AntService.svc"
 }
 
 enum DataStatusCode: Int {

@@ -27,7 +27,7 @@ class SBConstants {
         static let PasswordDataEmpty = "Будь-ласка, внесіть пароль."
         static let WrongDataInserted = "Помилка в зєднанні. Неспівпадіння між логіном та паролем. Будь-ласка, спробуйте ще раз."
         static let ForgotPassword = "Забув пароль"
-        static let CallCenter = "Кол-центр"
+        static let CallCenter = "Кол-центр Schoolbus"
         static let BackButtonTitle = "Назад"
     }
     
@@ -64,6 +64,6 @@ class SBConstants {
     }
     struct NotificationConstants {
         static let ReadMessage = "Прочитані"
-        static let UnReadMessage = "Не прочитані"
+        static let UnReadMessage = "Непрочитані"
     }
 }
