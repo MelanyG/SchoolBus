@@ -167,7 +167,7 @@ class LoginViewController: UIViewController {
         group.enter()
         for i in 0...SBConstants.numberOfDaysToLoad {
             let day = Date().addNoOfDays(noOfDays: i)
-            Loader.loadRoutes(for: day, completion: { (dayRoots) in
+            Loader.loadRoutes(for: day, completion: { (result: DayRouts?, statusCode: Int) in
                 if DatabaseManager.shared.items.count == SBConstants.numberOfDaysToLoad {
                     DatabaseManager.shared.items = DatabaseManager.shared.items.sorted { $0.date < $1.date }
                     group.leave()

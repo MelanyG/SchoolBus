@@ -1000,16 +1000,36 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qoo-qS-Nx5">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cdm-kX-Xhz">
+                                        <rect key="frame" x="169" y="305" width="37" height="37"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.201528281" green="0.2256214023" blue="0.25651162859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="cdm-kX-Xhz" firstAttribute="centerY" secondItem="qoo-qS-Nx5" secondAttribute="centerY" id="odf-Ut-ZVj"/>
+                                    <constraint firstItem="cdm-kX-Xhz" firstAttribute="centerX" secondItem="qoo-qS-Nx5" secondAttribute="centerX" id="wOe-bh-PgO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="R7Y-K7-VmN" firstAttribute="top" secondItem="qoo-qS-Nx5" secondAttribute="bottom" id="6nO-mh-r9b"/>
                             <constraint firstAttribute="trailing" secondItem="V8j-x0-PXv" secondAttribute="trailing" id="AfW-Uf-UCz"/>
+                            <constraint firstAttribute="trailing" secondItem="qoo-qS-Nx5" secondAttribute="trailing" id="Axz-ja-3NC"/>
                             <constraint firstItem="V8j-x0-PXv" firstAttribute="leading" secondItem="twp-qv-ISf" secondAttribute="leading" id="Cse-Jh-PHR"/>
+                            <constraint firstItem="qoo-qS-Nx5" firstAttribute="leading" secondItem="twp-qv-ISf" secondAttribute="leading" id="XL9-9O-aaP"/>
+                            <constraint firstItem="qoo-qS-Nx5" firstAttribute="top" secondItem="XKs-7p-PVN" secondAttribute="bottom" id="Z5u-tp-QYC"/>
                             <constraint firstItem="V8j-x0-PXv" firstAttribute="top" secondItem="XKs-7p-PVN" secondAttribute="bottom" id="y3T-qx-zDX"/>
                             <constraint firstItem="R7Y-K7-VmN" firstAttribute="top" secondItem="V8j-x0-PXv" secondAttribute="bottom" id="yhQ-ZW-v9W"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurView" destination="qoo-qS-Nx5" id="559-8h-dow"/>
                         <outlet property="detailedTableView" destination="V8j-x0-PXv" id="FLh-mp-VJI"/>
                     </connections>
                 </viewController>

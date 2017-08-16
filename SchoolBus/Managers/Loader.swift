@@ -10,20 +10,22 @@ import Foundation
 import RealmSwift
 
 class Loader {
+    static var updateRouteTimer: Timer!
     
-    class func loadPoints(for rootNumber: Int, completion handler: @escaping (_ result:List<PointModel>?) -> Void) {
+    class func loadPoints(for rootNumber: Int, completion handler: @escaping (_ result:List<PointModel>?, _ statusCode: Int) -> Void) {
         NetworkManager.getCompsByRouteFast(route: String(describing: rootNumber),
                                            completion: { (result: DataResult<AllCompsModel>, statusCode: Int) in
                                             switch result {
                                             case .success(let comps):
-                                                handler(comps.points)
+                                                handler(comps.points, statusCode)
                                             case .failure(let error):
                                                 debugPrint(error)
+                                                handler(nil, statusCode)
                                             }
         })
     }
     
-    class func loadRoutes(for date: Date, completion handler: @escaping (_ result:DayRouts?) -> Void) {
+    class func loadRoutes(for date: Date, completion handler: @escaping (_ result:DayRouts?, _ statusCode: Int) -> Void) {
         NetworkManager.getRoutesByDateFast(date: date.shortDate) {
             (result: DataResult<DayRouts>, statusCode: Int) in
             
@@ -31,15 +33,10 @@ class Loader {
             case .success(let value):
                 value.date = date
                 DatabaseManager.shared.addItem(dayItem: value)
-                handler(value)
+                handler(value, statusCode)
             case .failure(let error):
-                switch statusCode {
-                case DataStatusCode.Unauthorized.rawValue:
-                    debugPrint(error)
-                default:
-                    debugPrint(error)
-                    break
-                }
+                debugPrint(error)
+                handler(nil, statusCode)
             }
         }
     }
@@ -61,5 +58,27 @@ class Loader {
             }
         }
         return nil
+    }
+    
+    class func checkIfThereNeedToLoadNewRoute(completion handler: @escaping (_ loaded: Bool, _ statusCode: Int) -> Void) {
+        for i in 0..<DatabaseManager.shared.items.count {
+            if DatabaseManager.shared.items[i].date.theDayisTheSame() && i > 0 {
+                for j in 1...i {
+                    let day = DatabaseManager.shared.items.last?.date.addNoOfDays(noOfDays: j)
+                    Loader.loadRoutes(for: day!, completion: { (result: DayRouts?, statusCode: Int) in
+                        if result != nil {
+                            handler(true, statusCode)
+                        }
+                    })
+                }
+            } else {
+                break
+            }
+        }
+    }
+    
+    class func startUpdateRouteTimer() {
+        //        updateRouteTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadRoutes), userInfo: nil, repeats: true)
+        //    updateRouteTimer.fire()
     }
 }

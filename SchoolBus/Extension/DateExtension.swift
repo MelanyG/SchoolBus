@@ -81,7 +81,7 @@ extension Date {
     }
     
     func minutes(from date: Date) -> Int {
-return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+        return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
     }
     
     func theDayisTheSame() -> Bool {
@@ -90,4 +90,5 @@ return Calendar.current.dateComponents([.second], from: date, to: self).second ?
         }
         return false
     }
+
 }

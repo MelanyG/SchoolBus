@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SchoolBus/ViewControllers/ScheduleViewController.swift"
-            timestampString = "524374708.918015"
+            filePath = "SchoolBus/ViewControllers/InfoViewController.swift"
+            timestampString = "524551710.0945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "getRoute()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,14 +35,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SchoolBus/ViewControllers/ScheduleViewController.swift"
-            timestampString = "524374708.918015"
+            filePath = "SchoolBus/ViewControllers/InfoViewController.swift"
+            timestampString = "524551883.446637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "loadItem()"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "getRoute()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SchoolBus/Managers/NetworkManager.swift"
+            timestampString = "524546380.142564"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "getRoutesByDateFast(date:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static SchoolBus.NetworkManager.(getRoutesByDateFast &lt;A where A: ObjectMapper.Mappable&gt; (date : Swift.String, completion : (Alamofire.Result&lt;A&gt;, Swift.Int) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "SchoolBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/Managers/NetworkManager.swift"
+                  timestampString = "524546667.476803"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static SchoolBus.NetworkManager.(getRoutesByDateFast &lt;A where A: ObjectMapper.Mappable&gt; (date : Swift.String, completion : (Alamofire.Result&lt;A&gt;, Swift.Int) -&gt; ()) -&gt; ()).(closure #1).(implicit closure #1)"
+                  moduleName = "SchoolBus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/Managers/NetworkManager.swift"
+                  timestampString = "524546667.479764"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -51,78 +99,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SchoolBus/Models/PointModel.swift"
-            timestampString = "524371240.149228"
+            filePath = "SchoolBus/Managers/NetworkManager.swift"
+            timestampString = "524546382.686767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "mapping(map:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SchoolBus/ViewControllers/ScheduleViewController.swift"
-            timestampString = "524374708.918015"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SchoolBus/ViewControllers/ScheduleViewController.swift"
-            timestampString = "524374708.918015"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "getRoutesByDate(date:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "SchoolBus.ScheduleViewController.tableView (__ObjC.UITableView, numberOfRowsInSection : Swift.Int) -&gt; Swift.Int"
+                  symbolName = "static SchoolBus.NetworkManager.(getRoutesByDate &lt;A where A: ObjectMapper.Mappable&gt; (date : Swift.String, completion : (Alamofire.Result&lt;A&gt;, Swift.Int) -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "SchoolBus"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/ViewControllers/ScheduleViewController.swift"
-                  timestampString = "524373920.863362"
+                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/Managers/NetworkManager.swift"
+                  timestampString = "524551883.658101"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "891">
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "106">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "SchoolBus.ScheduleViewController.(tableView (__ObjC.UITableView, numberOfRowsInSection : Swift.Int) -&gt; Swift.Int).(implicit closure #3)"
+                  symbolName = "static SchoolBus.NetworkManager.(getRoutesByDate &lt;A where A: ObjectMapper.Mappable&gt; (date : Swift.String, completion : (Alamofire.Result&lt;A&gt;, Swift.Int) -&gt; ()) -&gt; ()).(closure #1).(implicit closure #1)"
                   moduleName = "SchoolBus"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/ViewControllers/ScheduleViewController.swift"
-                  timestampString = "524373920.865673"
+                  urlString = "file:///Users/melanyGulianovych/Documents/Projects/Schoolbus/SchoolBus/Managers/NetworkManager.swift"
+                  timestampString = "524551883.659847"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "10">
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "14">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SchoolBus/ViewControllers/InfoViewController.swift"
+            timestampString = "524551883.446637"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

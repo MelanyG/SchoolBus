@@ -31,6 +31,37 @@ class ScheduleViewController: UIViewController {
         configureController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Loader.checkIfThereNeedToLoadNewRoute {
+            [unowned self] (result: Bool, statusCode: Int) in
+            if result {
+                DispatchQueue.main.async { [weak self] in
+                    self?.routsPicker.reloadAllComponents()
+                }
+            } else {
+                DispatchQueue.main.async { [weak self] in
+                    switch statusCode {
+                    case DataStatusCode.Unauthorized.rawValue:
+                        self?.showAlert(with: "Ви не маэте достатнiх прав")
+                        return
+                    case DataStatusCode.WrongData.rawValue:
+                        self?.showAlert(with: "Не вiрнi данi наданi")
+                        return
+                    default:
+                        break
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("ScheduleViewController - viewWillDisappear")
+    }
+    
     //MARK: - Private methods
     
     func getAllRouts(from dayItems: [DayRouts]) {
@@ -104,11 +135,30 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     func loadItem() {
         self.blurView.isHidden = false
         Loader.loadPoints(for: selectedElement?.routeNum ?? 0) {
-            [unowned self] (result: List<PointModel>?) in
+            [unowned self] (result: List<PointModel>?, statusCode: Int) in
+            switch statusCode {
+            case DataStatusCode.Unauthorized.rawValue:
+                self.showAlert(with: "Ви не маэте достатнiх прав")
+                return
+            case DataStatusCode.WrongData.rawValue:
+                self.showAlert(with: "Не вiрнi данi наданi")
+                return
+            default:
+                break
+            }
             self.selectedElement?.points = result
             self.sortedPoints = result?.sorted(by: { $0.positionInRoute < $1.positionInRoute})
             self.detailedTableView.reloadData()
             self.blurView.isHidden = true
+        }
+    }
+    
+    func showAlert(with text: String) {
+        DispatchQueue.main.async { [weak self] in
+            let alertView = UIAlertController(title: "", message: text, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertView.addAction(action)
+            self?.present(alertView, animated: true, completion: nil)
         }
     }
 }
