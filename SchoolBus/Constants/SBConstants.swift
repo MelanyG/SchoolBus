@@ -66,6 +66,9 @@ class SBConstants {
         static let RouteTimeBegin = "RouteTime_B"
         static let RouteTimeEnd = "RouteTime_E"
         static let DayRoutsCount = "records"
+        static let RoutChangedFact = "Is_ChangeFact"
+        static let RoutChanged = "Is_ChangeRoute"
+        static let RouteVisitedItems = "Visited_Items"
     }
     struct NotificationConstants {
         static let ReadMessage = "Прочитані"

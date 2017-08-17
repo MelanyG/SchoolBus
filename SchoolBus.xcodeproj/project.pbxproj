@@ -23,6 +23,7 @@
 		36396C8D1EE36F2B0035ACF2 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36396C8C1EE36F2B0035ACF2 /* Server.swift */; };
 		36396C8F1EE46E370035ACF2 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36396C8E1EE46E370035ACF2 /* ErrorResponse.swift */; };
 		366CEE621F01A3520096EBD5 /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CEE611F01A3520096EBD5 /* DateTransform.swift */; };
+		368A6FB21F454F9700BA50BC /* ChangesOnTheRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A6FB11F454F9600BA50BC /* ChangesOnTheRoute.swift */; };
 		369C01BD1F1176BA00432D2B /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01BC1F1176BA00432D2B /* RouteViewModel.swift */; };
 		369C01BF1F129C6400432D2B /* CallCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01BE1F129C6400432D2B /* CallCenterViewController.swift */; };
 		369C01C31F12B4D400432D2B /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369C01C21F12B4D400432D2B /* NotificationViewController.swift */; };
@@ -67,6 +68,7 @@
 		36396C8C1EE36F2B0035ACF2 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		36396C8E1EE46E370035ACF2 /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		366CEE611F01A3520096EBD5 /* DateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTransform.swift; sourceTree = "<group>"; };
+		368A6FB11F454F9600BA50BC /* ChangesOnTheRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangesOnTheRoute.swift; sourceTree = "<group>"; };
 		369C01BC1F1176BA00432D2B /* RouteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		369C01BE1F129C6400432D2B /* CallCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallCenterViewController.swift; sourceTree = "<group>"; };
 		369C01C21F12B4D400432D2B /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				360710851EF6A9BC007EC0C0 /* RouteModel.swift */,
 				36F09B501F37A0A2001073FF /* AllCompsModel.swift */,
 				369C01D51F1BD8F500432D2B /* UserModel.swift */,
+				368A6FB11F454F9600BA50BC /* ChangesOnTheRoute.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				369C01D61F1BD8F500432D2B /* UserModel.swift in Sources */,
 				36396C7E1EE34BC20035ACF2 /* NetworkManager.swift in Sources */,
 				369C01D01F12B7EA00432D2B /* NotificationViewModel.swift in Sources */,
+				368A6FB21F454F9700BA50BC /* ChangesOnTheRoute.swift in Sources */,
 				369C01DA1F1BE77F00432D2B /* DetaleImageCell.swift in Sources */,
 				360710861EF6A9BC007EC0C0 /* RouteModel.swift in Sources */,
 				39C609531EDC301E00105DD7 /* AppDelegate.swift in Sources */,

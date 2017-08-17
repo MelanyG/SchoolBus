@@ -23,6 +23,7 @@ class RouteModel: Object, Mappable {
     dynamic var avgSpeed: String = ""
     dynamic var qtyOfPoints: Int = 0
     var points: List<PointModel>?
+    var lastChangedData: Date = Date()
     
     required convenience init?(map: Map) {
         self.init()

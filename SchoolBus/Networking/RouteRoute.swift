@@ -14,6 +14,7 @@ enum RouteRoute: Route {
     case getAllRoutes(path: String, sessionId: String, date: String)
     case getAllRoutesFast(path: String, sessionId: String, date: String)
     case getAllCompsToRoute(path: String, sessionId: String, routeID: String)
+    case getOneUpdatedRoute(path: String, sessionId: String, routeID: String, lastChanges: String)
     
     var method: HTTPMethod {
         switch self {
@@ -22,6 +23,8 @@ enum RouteRoute: Route {
         case .getAllRoutesFast:
             return .get
         case .getAllCompsToRoute:
+            return .get
+        case .getOneUpdatedRoute:
             return .get
         }
     }
@@ -34,6 +37,8 @@ enum RouteRoute: Route {
             return "\(path)/ResponseDeliveryRoutes_Get"
         case .getAllCompsToRoute(let path, _, _):
             return "\(path)/ResponseDeliveryComps_Get"
+        case .getOneUpdatedRoute(let path, _, _, _):
+            return "\(path)/ResponseDeliveryLastChangeData_Get"
         }
     }
     
@@ -60,6 +65,11 @@ enum RouteRoute: Route {
             params += "&sord=asc"
             params += "&Route_Id=\(routeID)"
             return params
+        case .getOneUpdatedRoute(_, let sessionID, let routeID, let lastChanges):
+            var params = "Session_Ident=\(sessionID)"
+            params += "&Route_Id=\(routeID)"
+            params += "&LastGetData=\(lastChanges)"
+            return params
         }
     }
     
@@ -70,6 +80,8 @@ enum RouteRoute: Route {
         case .getAllRoutesFast:
             return ["Content-Type": "application/json"]
         case .getAllCompsToRoute:
+            return ["Content-Type": "application/json"]
+        case .getOneUpdatedRoute:
             return ["Content-Type": "application/json"]
         }
     }

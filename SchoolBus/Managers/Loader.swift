@@ -60,22 +60,36 @@ class Loader {
         return nil
     }
     
-    class func checkIfThereNeedToLoadNewRoute(completion handler: @escaping (_ loaded: Bool, _ statusCode: Int) -> Void) {
+    class func checkIfThereNeedToLoadNewRoute(completion handler: @escaping (_ loaded: Bool) -> Void) {
         for i in 0..<DatabaseManager.shared.items.count {
             if DatabaseManager.shared.items[i].date.theDayisTheSame() && i > 0 {
                 for j in 1...i {
                     let day = DatabaseManager.shared.items.last?.date.addNoOfDays(noOfDays: j)
                     Loader.loadRoutes(for: day!, completion: { (result: DayRouts?, statusCode: Int) in
                         if result != nil {
-                            handler(true, statusCode)
+                            handler(true)
                         }
                     })
                 }
-            } else {
-                break
+            }
+        }
+        handler(false)
+    }
+    
+    class func getUpdatesOnRoute(for date: Date, for routId: String, actualroute: Route, completion handler: @escaping (_ result:ChangesOnTheRoute?, _ statusCode: Int) -> Void) {
+        NetworkManager.getRoutesByDateFast(date: date.shortDate) {
+            (result: DataResult<ChangesOnTheRoute>, statusCode: Int) in
+            switch result {
+            case .success(let value):
+                actualroute.lastChangedData = Date()
+                handler(value, statusCode)
+            case .failure(let error):
+                debugPrint(error)
+                handler(nil, statusCode)
             }
         }
     }
+
     
     class func startUpdateRouteTimer() {
         //        updateRouteTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadRoutes), userInfo: nil, repeats: true)

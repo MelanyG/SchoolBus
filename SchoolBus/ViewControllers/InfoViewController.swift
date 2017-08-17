@@ -15,7 +15,7 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var detailedTableView: UITableView!
     var sortedPoints: [PointModel]?
-    
+    var updateRouteTimer: Timer!
     override func viewDidLoad() {
         super.viewDidLoad()
         getRoute()
@@ -50,8 +50,23 @@ class InfoViewController: UIViewController {
                     case DataStatusCode.Unauthorized.rawValue:
                         self.showAlert(with: "Ви не маэте достатнiх прав")
                         return
-                    case DataStatusCode.WrongData.rawValue:
-                        self.showAlert(with: "Не вiрнi данi наданi")
+                    case DataStatusCode.Error.rawValue:
+                        self.showAlert(with: "Error")
+                        return
+                    case DataStatusCode.ERR_SESSION_CLOSE.rawValue:
+                        self.showAlert(with: "ERR_SESSION_CLOSE")
+                        return
+                    case DataStatusCode.ERR_KNOWN.rawValue:
+                        self.showAlert(with: "ERR_KNOWN")
+                        return
+                    case DataStatusCode.INFO.rawValue:
+                        self.showAlert(with: "INFO")
+                        return
+                    case DataStatusCode.WARNING.rawValue:
+                        self.showAlert(with: "WARNING")
+                        return
+                    case DataStatusCode.VIOLATION_TARIFF.rawValue:
+                        self.showAlert(with: "VIOLATION_TARIFF")
                         return
                     default:
                         break

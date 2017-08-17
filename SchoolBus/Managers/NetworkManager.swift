@@ -18,7 +18,12 @@ enum Hosts: String {
 
 enum DataStatusCode: Int {
     case OK = 0
-    case WrongData = 3
+    case Error = 1
+    case ERR_SESSION_CLOSE = 2
+    case ERR_KNOWN = 3
+    case INFO = 4
+    case WARNING = 5
+    case VIOLATION_TARIFF = 6
     case Unauthorized = 401
     case NotFound = 404
 }
@@ -112,4 +117,14 @@ class NetworkManager {
             }
         }
     }
+    
+    static func getUpdatesForRoute<T: Mappable>(route routeNum: String, last receivedChanges: String, completion: @escaping (DataResult<T>, _ statusCode: Int) -> ()) {
+        if let path = CacheManager.availableServer, let session = CacheManager.currentSession {
+            Alamofire.request(RouteRoute.getOneUpdatedRoute(path: path.serverURL, sessionId: session.sessionId, routeID: routeNum, lastChanges: receivedChanges))
+                .responseObject() { (response: DataResponse<T>) in
+                    completion(response.result, response.response?.statusCode ?? DataStatusCode.OK.rawValue)
+            }
+        }
+    }
+
 }

@@ -34,25 +34,11 @@ class ScheduleViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Loader.checkIfThereNeedToLoadNewRoute {
-            [unowned self] (result: Bool, statusCode: Int) in
-            if result {
+            [unowned self] (loaded: Bool) in
+            if loaded {
                 DispatchQueue.main.async { [weak self] in
                     self?.routsPicker.reloadAllComponents()
                 }
-            } else {
-                DispatchQueue.main.async { [weak self] in
-                    switch statusCode {
-                    case DataStatusCode.Unauthorized.rawValue:
-                        self?.showAlert(with: "Ви не маэте достатнiх прав")
-                        return
-                    case DataStatusCode.WrongData.rawValue:
-                        self?.showAlert(with: "Не вiрнi данi наданi")
-                        return
-                    default:
-                        break
-                    }
-                }
-                
             }
         }
     }
@@ -140,8 +126,23 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
             case DataStatusCode.Unauthorized.rawValue:
                 self.showAlert(with: "Ви не маэте достатнiх прав")
                 return
-            case DataStatusCode.WrongData.rawValue:
-                self.showAlert(with: "Не вiрнi данi наданi")
+            case DataStatusCode.Error.rawValue:
+                self.showAlert(with: "Error")
+                return
+            case DataStatusCode.ERR_SESSION_CLOSE.rawValue:
+                self.showAlert(with: "ERR_SESSION_CLOSE")
+                return
+            case DataStatusCode.ERR_KNOWN.rawValue:
+                self.showAlert(with: "ERR_KNOWN")
+                return
+            case DataStatusCode.INFO.rawValue:
+                self.showAlert(with: "INFO")
+                return
+            case DataStatusCode.WARNING.rawValue:
+                self.showAlert(with: "WARNING")
+                return
+            case DataStatusCode.VIOLATION_TARIFF.rawValue:
+                self.showAlert(with: "VIOLATION_TARIFF")
                 return
             default:
                 break
