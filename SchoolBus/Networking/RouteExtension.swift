@@ -39,7 +39,6 @@ extension Route {
         let url = try path.asURL()
         
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
-//        urlComponents?.path = path
         urlComponents?.query = query
         
         guard let fullUrl = urlComponents?.url else {

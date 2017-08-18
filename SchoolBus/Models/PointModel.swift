@@ -18,6 +18,7 @@ class PointModel: Object, Mappable {
     dynamic var pointId: Int = 0
     dynamic var externalIdentifier: Int = 0
     dynamic var isVisited: Int = 0
+    var visited: Bool = false
     dynamic var positionInRoute: Int = 0
     dynamic var positionTypeID: Int = 0
     dynamic var address: String = ""
@@ -52,5 +53,6 @@ class PointModel: Object, Mappable {
         isObserved <- map[SBConstants.ModelConstants.PointIsObserved]
         observerName <- map[SBConstants.ModelConstants.PointObserverName]
         phone <- map[SBConstants.ModelConstants.PointObserverPhone]
+        visited = isVisited == 0 ? false : true
     }
 }

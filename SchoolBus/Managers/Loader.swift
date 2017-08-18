@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 class Loader {
-    static var updateRouteTimer: Timer!
     
     class func loadPoints(for rootNumber: Int, completion handler: @escaping (_ result:List<PointModel>?, _ statusCode: Int) -> Void) {
         NetworkManager.getCompsByRouteFast(route: String(describing: rootNumber),
@@ -76,12 +75,15 @@ class Loader {
         handler(false)
     }
     
-    class func getUpdatesOnRoute(for date: Date, for routId: String, actualroute: Route, completion handler: @escaping (_ result:ChangesOnTheRoute?, _ statusCode: Int) -> Void) {
-        NetworkManager.getRoutesByDateFast(date: date.shortDate) {
+    class func getUpdatesOnRoute(for lastUpdates: Date, for routId: String, actualroute: RouteModel, completion handler: @escaping (_ result:ChangesOnTheRoute?, _ statusCode: Int) -> Void) {
+        NetworkManager.getUpdatesForRoute(route: routId, last: lastUpdates.shortDate) {
             (result: DataResult<ChangesOnTheRoute>, statusCode: Int) in
             switch result {
             case .success(let value):
                 actualroute.lastChangedData = Date()
+                let positions = value.visitedItems.components(separatedBy: [","])
+                let all = positions.map({Int($0) ?? 0})
+                actualroute.updateMyPoints(array: all)
                 handler(value, statusCode)
             case .failure(let error):
                 debugPrint(error)

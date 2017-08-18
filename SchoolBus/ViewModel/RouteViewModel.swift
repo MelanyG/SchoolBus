@@ -186,7 +186,7 @@ class PointViewModel: DataRepresentative {
     }
     
     var currentStatus: String {
-        if model?.isVisited != nil {
+        if model?.visited == true {
             return SBConstants.PointStatus.IsOnTheWay
         } else {
             return SBConstants.PointStatus.IsWaiting
