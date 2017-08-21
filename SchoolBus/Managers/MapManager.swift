@@ -12,11 +12,13 @@ import CoreLocation
 
 class MapManager {
     
+    static var session = CacheManager.currentSession?.sessionId
+    
     /// Gets all route geometry (route parts, delivery points)
     static func getRouteData() {
         
         /// Improve -> add methods getSessionId() and getRouteId
-        let requestURL = "https://main.ant-logistics.com/AntLogistics/AntService.svc/ResponseDeliveryRoutes_GetRoute?Session_Ident=C96B2446-4E8F-418F-8E44-089AE854CEAC&Route_Id=1"
+        let requestURL = "https://calc.ant-logistics.com/AntLogistics/AntService.svc/ResponseDeliveryRoutes_GetRoute?Session_Ident=" + MapManager.session! + "&Route_Id=1"
         
         Alamofire.request(requestURL, method: .get).responseJSON { (responseData) in
             switch responseData.result {
@@ -108,14 +110,17 @@ class MapManager {
     /// School bus position
     static func getSchoolBusPosition() {
         
-        let requestURL = "https://main.ant-logistics.com/AntLogistics/AntService.svc/GadgetCurrentState_Get?Session_Ident=C96B2446-4E8F-418F-8E44-089AE854CEAC&Route_Id=1"
+        let requestURL = "https://calc.ant-logistics.com/AntLogistics/AntService.svc/GadgetCurrentState_Get?Session_Ident=" + MapManager.session! + "&Route_Id=1"
         
         Alamofire.request(requestURL, method: .get).responseJSON { (responseData) in
             switch responseData.result {
             case .success:
                 if let jsonData = responseData.result.value as? [String: Any] {
-                    let pointCoords = jsonData.filter { $0.key == "points" }.filter { $0.key == "features" } as [Any]
-//                    MapViewController.busPosition = RoutePoint(latitude: pointCoords, longitude: pointCoords)
+                    let points = jsonData.filter { $0.key == "points" }.map { $0.value as! [String: Any] }.flatMap { $0 }
+                    let features = points.filter { $0.key == "features" }.map {$0.value as! [[String:Any]]}.flatMap { $0 }.flatMap { $0 }
+                    let geometry = features.filter { $0.key == "geometry" }.map { $0.value as! [String: Any] }.flatMap { $0 }
+                    let coordinates = geometry.filter { $0.key == "coordinates" }.map {$0.value as! [Double]}.flatMap { $0 }
+                    MapViewController.busPosition = RoutePoint(latitude: coordinates.last!, longitude: coordinates.first!)
                 }
                 
             case .failure(let error):

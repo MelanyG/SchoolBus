@@ -29,7 +29,7 @@ struct StateMachine {
     }
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var idLable: UILabel!
     @IBOutlet weak var loginTxtField: UITextField!
@@ -47,6 +47,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loginTxtField.delegate = self
+        self.passTxtField.delegate = self
         configureCachedData()
         
         /// Login and password text fields borders
@@ -88,6 +90,11 @@ class LoginViewController: UIViewController {
     //        linkTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.init(colorLiteralRed: 51.0/255.0, green: 180.0/255.0, blue: 227.0/225.0, alpha: 1.0), NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
     //    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     @IBAction func signInPressed(_ sender: UIButton) {
         
         /// Hide Login elements while signing in
@@ -108,7 +115,7 @@ class LoginViewController: UIViewController {
                 //                updateInterface()
                 getAllRoutes()
                 MapManager.getRouteData()
-                ProfileManager.getProfileData()
+//                ProfileManager.getProfileData()
                 MapManager.getSchoolBusPosition()
                 debugPrint("Current session: \(session.sessionId)")
             } else {

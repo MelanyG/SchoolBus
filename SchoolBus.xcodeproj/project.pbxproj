@@ -324,6 +324,7 @@
 				TargetAttributes = {
 					39C6094E1EDC301E00105DD7 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 2ZY9S652KM;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -581,9 +582,9 @@
 			baseConfigurationReference = 6C51F305B281F2FC6195E297 /* Pods-SchoolBus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2ZY9S652KM;
 				INFOPLIST_FILE = SchoolBus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MH.SchoolBus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -596,9 +597,9 @@
 			baseConfigurationReference = D235DFCFBD76DBDCCAE5097B /* Pods-SchoolBus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2ZY9S652KM;
 				INFOPLIST_FILE = SchoolBus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MH.SchoolBus;
 				PRODUCT_NAME = "$(TARGET_NAME)";

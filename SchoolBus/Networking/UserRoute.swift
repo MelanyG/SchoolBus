@@ -40,7 +40,7 @@ enum UserRoute: Route {
     var query: String {
         switch self {
         case .serverID:
-            return "req=api"
+            return "req=dev"
         case .login(_, let email, let pass):
             var params = "type=login"
             params += "&email=\(email)"

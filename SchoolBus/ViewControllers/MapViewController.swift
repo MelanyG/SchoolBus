@@ -135,7 +135,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let dispatchTime = DispatchTime.now() + .seconds(2)
             DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
                 Timer.scheduledTimer(timeInterval: TimeInterval(0.5), target: self, selector: #selector(self.moveSchoolBus), userInfo: nil, repeats: true)
-                Timer.scheduledTimer(timeInterval: TimeInterval(10), target: self, selector: #selector(self.getSchoolBusPosition), userInfo: nil, repeats: true)
+                Timer.scheduledTimer(timeInterval: TimeInterval(5), target: self, selector: #selector(self.getSchoolBusPosition), userInfo: nil, repeats: true)
             }
         }
     }
@@ -145,21 +145,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func moveSchoolBus() {
-        MapViewController.busAnnotation.coordinate.latitude = MapViewController.fullRoutePoints[MapViewController.busStepCounter].pointCoordinates.latitude
-        MapViewController.busAnnotation.coordinate.longitude = MapViewController.fullRoutePoints[MapViewController.busStepCounter].pointCoordinates.longitude
+//        MapViewController.busAnnotation.coordinate.latitude = MapViewController.fullRoutePoints[MapViewController.busStepCounter].pointCoordinates.latitude
+//        MapViewController.busAnnotation.coordinate.longitude = MapViewController.fullRoutePoints[MapViewController.busStepCounter].pointCoordinates.longitude
+        MapViewController.busAnnotation.coordinate.latitude = MapViewController.busPosition.pointCoordinates.latitude
+        MapViewController.busAnnotation.coordinate.longitude = MapViewController.busPosition.pointCoordinates.longitude
+        
         MapViewController.hiddenBusAnnotation.coordinate = MapViewController.busAnnotation.coordinate
         
         /// Rotating bus
-        let previousMapPoint = MKMapPoint(x: MapViewController.fullRoutePoints[MapViewController.busStepCounter].pointCoordinates.latitude,
-                                          y: MapViewController.fullRoutePoints[MapViewController.busStepCounter].pointCoordinates.longitude)
+//        let previousMapPoint = MKMapPoint(x: MapViewController.fullRoutePoints[MapViewController.busStepCounter].pointCoordinates.latitude,
+//                                          y: MapViewController.fullRoutePoints[MapViewController.busStepCounter].pointCoordinates.longitude)
+//        
+//        let nextMapPoint = MKMapPoint(x: MapViewController.fullRoutePoints[MapViewController.busStepCounter + 1].pointCoordinates.latitude,
+//                                      y: MapViewController.fullRoutePoints[MapViewController.busStepCounter + 1].pointCoordinates.longitude)
         
-        let nextMapPoint = MKMapPoint(x: MapViewController.fullRoutePoints[MapViewController.busStepCounter + 1].pointCoordinates.latitude,
-                                      y: MapViewController.fullRoutePoints[MapViewController.busStepCounter + 1].pointCoordinates.longitude)
+//        MapViewController.busDirection = self.directionBetweenPoints(sourcePoint: previousMapPoint, nextMapPoint)
+//        MapViewController.busPinView.transform = self.mapView.transform.rotated(by: CGFloat(self.degreesToRadians(degrees: MapViewController.busDirection)))
         
-        MapViewController.busDirection = self.directionBetweenPoints(sourcePoint: previousMapPoint, nextMapPoint)
-        MapViewController.busPinView.transform = self.mapView.transform.rotated(by: CGFloat(self.degreesToRadians(degrees: MapViewController.busDirection)))
-        
-        MapViewController.busStepCounter += 1
+//        MapViewController.busStepCounter += 1
     }
     
     private func directionBetweenPoints(sourcePoint: MKMapPoint, _ destinationPoint: MKMapPoint) -> CLLocationDirection {

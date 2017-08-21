@@ -13,7 +13,6 @@ import ObjectMapper
 
 enum Hosts: String {
     case Development = "https://ant-logistics.com"
-//    case ActiveServer = "https://main.ant-logistics.com/AntLogistics/AntService.svc"
     case ActiveServer = "https://calc.ant-logistics.com/AntLogistics/AntService.svc"
 }
 
@@ -29,12 +28,11 @@ typealias DataResult<T> = Alamofire.Result<T>
 class NerworkManager {
     
     static func serverUrl() ->String{
-        
         return Hosts.Development.rawValue
     }
     
     static func getActiveServerUrl() throws -> URL  {
-        return try Hosts.Development.rawValue.asURL()
+        return try Hosts.ActiveServer.rawValue.asURL()
     }
     
     static let reachability = Alamofire.NetworkReachabilityManager(host: "www.apple.com")
